@@ -1,0 +1,6 @@
+{
+  "name": "Gani Abi Saputra Portfolio",
+  "description": "Faithful and interactive web recreation of the premium professional developer portfolio of Gani Abi Saputra V.S.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
