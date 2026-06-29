@@ -3,10 +3,10 @@ import { ChevronRight, Layers, Cpu, Wrench } from "lucide-react";
 import { SKILLS_AND_TOOLS } from "../data";
 
 // Maps each tech key → Simple Icons CDN slug + brand hex color
-const TECH_ICON_MAP: Record<string, { slug: string; color: string }> = {
+const TECH_ICON_MAP: Record<string, { slug: string; color: string; deviconUrl?: string }> = {
   // Frontend
   html:       { slug: "html5",            color: "#E34F26" },
-  css:        { slug: "css3",             color: "#1572B6" },
+  css:        { slug: "css3",             color: "#1572B6", deviconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
   js:         { slug: "javascript",       color: "#F7DF1E" },
   ts:         { slug: "typescript",       color: "#3178C6" },
   react:      { slug: "react",            color: "#61DAFB" },
@@ -24,13 +24,13 @@ const TECH_ICON_MAP: Record<string, { slug: string; color: string }> = {
   php:        { slug: "php",              color: "#777BB4" },
   rest:       { slug: "postman",          color: "#FF6C37" },
   // Tools
-  vscode:     { slug: "visualstudiocode", color: "#007ACC" },
+  vscode:     { slug: "visualstudiocode", color: "#007ACC", deviconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" },
   android:    { slug: "androidstudio",    color: "#3DDC84" },
   git:        { slug: "git",              color: "#F05032" },
-  photoshop:  { slug: "adobephotoshop",   color: "#31A8FF" },
+  photoshop:  { slug: "adobephotoshop",   color: "#31A8FF", deviconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg" },
   github:     { slug: "github",           color: "#181717" },
   vercel:     { slug: "vercel",           color: "#000000" },
-  illustrator:{ slug: "adobeillustrator", color: "#FF9A00" },
+  illustrator:{ slug: "adobeillustrator", color: "#FF9A00", deviconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg" },
   npm:        { slug: "npm",              color: "#CB3837" },
 };
 
@@ -42,9 +42,9 @@ function TechLogo({ icon }: { icon: string }) {
     );
   }
 
-  const { slug, color } = entry;
-  // Use Simple Icons CDN — official SVG, properly licensed
-  const src = `https://cdn.simpleicons.org/${slug}/${color.replace("#", "")}`;
+  const { slug, color, deviconUrl } = entry;
+  // Use Devicon if available, otherwise fallback to Simple Icons CDN
+  const src = deviconUrl || `https://cdn.simpleicons.org/${slug}/${color.replace("#", "")}`;
 
   return (
     <img
