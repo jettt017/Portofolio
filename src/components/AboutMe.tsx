@@ -92,7 +92,7 @@ export default function AboutMe() {
                     className="absolute inset-0"
                   >
                     <img 
-                      src="./assets/PhotoProfile.png" 
+                      src="/assets/PhotoProfile.png" 
                       alt="Gani Portrait Mockup" 
                       referrerPolicy="no-referrer"
                       className={`w-full h-full object-cover transition-all duration-300 ${filters[filterIndex].class}`}

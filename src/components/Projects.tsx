@@ -449,7 +449,7 @@ export default function Projects() {
     >
       <div className="w-full flex-1 bg-[#FAF9F5] border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-center items-center text-near-black relative group" style={{ minHeight: "420px" }}>
         <img 
-          src="./assets/Project-Portalia.png" 
+          src="/assets/Project-Portalia.png" 
           alt="Portalia Official Showcase" 
           className="w-full h-full object-contain p-4 group-hover:scale-[1.02] transition-transform duration-500"
         />
