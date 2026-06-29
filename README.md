@@ -1,191 +1,230 @@
-# Gani Abi Saputra V.S. — Premium Interactive Portfolio
+<div align="center">
 
-An elegant, production-ready, highly interactive personal portfolio designed in a **Swiss-Modern digital file folder style**. Built with **React 19**, **Vite**, **Tailwind CSS v4**, and **Motion** (formerly Framer Motion) to showcase computer science student **Gani Abi Saputra V.S.**'s experience, technical skills, interactive project simulators, and verified certifications.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=1C71D8&height=200&section=header&text=Gani%20Abi%20Saputra%20V.S.&fontSize=42&fontColor=FFFFFF&fontAlignY=38&desc=Premium%20Interactive%20Portfolio&descAlignY=58&descSize=18&descColor=FFFFFF" alt="header" width="100%"/>
+
+<br/>
+
+[![Portfolio](https://img.shields.io/badge/🌐_Live_Portfolio-1C71D8?style=for-the-badge&logoColor=white)](https://github.com/jettt017/Portofolio)
+[![GitHub](https://img.shields.io/badge/GitHub-jettt017-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jettt017)
+[![Email](https://img.shields.io/badge/Email-gamely017%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:gamely017@gmail.com)
+
+<br/>
+
+> **Swiss-Modern Digital Portfolio** — An elegant, production-ready, highly interactive personal portfolio  
+> designed as a physical file-folder system, built for a Computer Science student at UPN "Veteran" Jawa Timur.
+
+</div>
 
 ---
 
-## 🌟 Overview
+## 📸 Preview
 
-This portfolio is styled with a distinct, premium, and professional offline-first motif. Inspired by physical archive systems and modern Swiss-School grid layouts, the user interface features:
-*   A tactile file folder motif with realistic layered papers that slide, tilt, and depth-shift.
-*   An editorial aesthetic combining deep charcoal, rich brand blue, and warm cream tones.
-*   Highly responsive interactive project simulators embedded directly into the workspace, transforming a standard static resume into an immersive software playground.
+<div align="center">
+
+| Hero Section | Projects Section | Tech Stack |
+|:---:|:---:|:---:|
+| Tactile folder motif with depth-shift hover | Live iframes + fallback simulators | Double-tab grid with brand SVG logos |
+
+</div>
 
 ---
 
-## 🚀 Key Features
+## ✨ Key Features
 
-*   **Tactile Folder Motif (Hero Section):** Layered folder graphics that slide and lift on hover, complete with dynamic confidential documents and visual quick-links.
-*   **Filterable HUD Portrait (About Me Section):** An interactive viewport displaying the developer's portrait equipped with professional retro-future HUD markings and camera filter switches (Grayscale, High Contrast, Sepia, etc.).
-*   **Grid-Accent Tech Stack (Skills Section):** A structured layout showcasing official vector-rendered brand logos for Frontend, Backend, and Tools, wrapped in a double-tabbed folder interface.
-*   **Interactive Simulation Engines (Projects Section):** Immersive, fully functional interactive simulator boxes for Gani's main projects:
-    *   *MIA (UMKM Discovery):* Product categorization filtering and live review submission.
-    *   *E-Cycle Platform (AI Waste Tracker):* Carbon savings and economic reward points calculator.
-    *   *GrinBuds (Gamified Learning):* Duolingo-style letter recognition game and real-time parent progress charts.
-    *   *Portalia (Campus Marketplace):* Live student product addition, category sorting, and interactive listing deletion.
-    *   *NusaTales (Culture Hub):* Story node browser demonstrating Laravel backend endpoints.
-*   **Adaptive Certificate Renderer (Certifications Section):** Display system for verified credentials with a multi-layered image fallback architecture (PNG -> JPG -> JPEG -> WEBP -> clean raw file routes) to guarantee perfect asset rendering in any preview sandbox.
-*   **Premium Interactive Contacts (Contact Section):** High-contrast grid layouts with dynamic validation forms and visual feedback for streamlined collaboration.
+<table>
+  <tr>
+    <td>🗂️ <strong>Tactile Folder Motif</strong></td>
+    <td>Layered folder graphics that slide and lift on hover with dynamic document overlays</td>
+  </tr>
+  <tr>
+    <td>🧑‍💻 <strong>Interactive HUD Portrait</strong></td>
+    <td>Professional filter-switching portrait with retro-future HUD markings (Grayscale, Sepia, etc.)</td>
+  </tr>
+  <tr>
+    <td>🚀 <strong>Live Project Demos</strong></td>
+    <td>Real iframe embeds with realistic browser chrome + auto-fallback simulators if blocked</td>
+  </tr>
+  <tr>
+    <td>🎨 <strong>Swiss-School Grid Design</strong></td>
+    <td>Editorial aesthetic with deep charcoal, brand blue, and warm cream palette</td>
+  </tr>
+  <tr>
+    <td>📜 <strong>Certifications Renderer</strong></td>
+    <td>Multi-layered image fallback system (PNG → JPG → WEBP) for flawless asset display</td>
+  </tr>
+  <tr>
+    <td>📬 <strong>Smart Contact Form</strong></td>
+    <td>High-contrast grid layout with dynamic validation and visual feedback</td>
+  </tr>
+</table>
 
 ---
 
 ## 🛠️ Tech Stack
 
-*   **Framework:** React 19.0.1 (Functional components with hooks)
-*   **Build Tool:** Vite 6.2.3 (High-performance static compilation)
-*   **Styling Engine:** Tailwind CSS v4.1.14 (Direct utility styling with CSS-in-JS-free compilation)
-*   **Animation System:** Motion 12.23.24 (`motion/react` spring physics & transitions)
-*   **Icons:** Lucide React 0.546.0 (Unified iconography)
-*   **Integrations:** `@google/genai` (Configured server-side model interfaces)
-*   **Language:** TypeScript (Type-safe models and data structures)
+### ⚡ Core Framework
+
+<div align="center">
+
+[![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite_6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
+</div>
+
+### 🎨 Styling & Animation
+
+<div align="center">
+
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Motion_(Framer)-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://motion.dev/)
+[![Lucide](https://img.shields.io/badge/Lucide_React-F56565?style=for-the-badge&logo=lucide&logoColor=white)](https://lucide.dev/)
+
+</div>
+
+### 🖥️ Frontend Skills Used
+
+<div align="center">
+
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://figma.com/)
+
+</div>
+
+### ⚙️ Backend Skills Used
+
+<div align="center">
+
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/)
+[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com/)
+[![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net/)
+
+</div>
+
+### 🔧 Tools & Platforms
+
+<div align="center">
+
+[![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
+[![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://npmjs.com/)
+
+</div>
+
+---
+
+## 🗂️ Featured Projects
+
+| Project | Role | Tech | Demo |
+|---------|------|------|------|
+| **MIA** — UMKM Discovery Platform | UI/UX Designer & Frontend Dev | React, CSS, Figma | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://mia-topaz-theta.vercel.app) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/rafienajwan/mia) |
+| **E-Cycle Platform** — AI Waste Manager | Frontend & Backend Dev | Next.js, Gemini API | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://e-cycleplatform.vercel.app) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/jettt017/e-cycle-platform) |
+| **GrinBuds** — Gamified Learning for Kids | UI/UX Designer & Frontend Dev | Next.js, Framer Motion | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://grinbuds2.vercel.app) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/KurioSannn/GRINBUDSV2) |
+| **Portalia** — Campus Marketplace UI/UX | UI/UX Designer | Figma, Prototyping | [![Figma](https://img.shields.io/badge/Prototype-F24E1E?style=flat-square&logo=figma&logoColor=white)](https://www.figma.com/proto/3VMKudtT9yFD84kgmcbeeS/) |
+| **NusaTales** — Cultural Storytelling Hub | Backend Developer | Laravel, PHP, MySQL | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://nusatales.isslab.web.id) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/viviovilala/nusatales) |
 
 ---
 
 ## 📁 Folder Structure
 
 ```
-.
-├── CLAUDE.md               # AI context, permanent memory, design system, and prompt logs
-├── README.md               # User-facing documentation & developer startup guide
-├── index.html              # Core HTML entrypoint
-├── metadata.json           # Application settings, frame permissions, and main capabilities
-├── package.json            # NPM scripts and library declarations
-├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite bundler, plugins, and Tailwind integration config
-└── src/
-    ├── App.tsx             # Root layout, dynamic scroll progress, navigation, and section assembly
-    ├── main.tsx            # Main DOM rendering hook
-    ├── data.ts             # Central source-of-truth for Gani's personal info, projects, and skills
-    ├── types.ts            # Shared TypeScript interface models
-    ├── index.css           # Global typography definitions, Tailwind imports, scrollbars, and clips
-    └── components/         # Modular layout units
-        ├── Hero.tsx        # Hero section (supports "main" folder and "projects" divider views)
-        ├── AboutMe.tsx     # Narrative about Gani, featuring filter-switching portrait HUD
-        ├── TechStack.tsx   # Categorized skills boards rendered with hand-drawn SVG brand logos
-        ├── Projects.tsx    # Live simulation playground for MIA, E-Cycle, GrinBuds, Portalia, & NusaTales
-        ├── Certifications.tsx # Fallback-resilient certificate image display boards
-        └── Contact.tsx     # Custom contact forms with instant focus styles and email triggers
+Portofolio/
+├── assets/
+│   ├── PhotoProfile.png          # Profile photo
+│   └── Project-Portalia.png      # Portalia official banner
+├── src/
+│   ├── App.tsx                   # Root layout, navigation, scroll progress
+│   ├── main.tsx                  # DOM rendering hook
+│   ├── data.ts                   # Source-of-truth: projects, skills, personal info
+│   ├── types.ts                  # Shared TypeScript interfaces
+│   ├── index.css                 # Global styles, typography, Tailwind imports
+│   └── components/
+│       ├── Hero.tsx              # Tactile folder hero section
+│       ├── AboutMe.tsx           # HUD portrait with filter switching
+│       ├── TechStack.tsx         # Double-tab skill boards with SVG logos
+│       ├── Projects.tsx          # Live iframe embeds + fallback simulators
+│       ├── Certifications.tsx    # Resilient certificate image display
+│       └── Contact.tsx           # Validated contact form
+├── index.html                    # HTML entrypoint
+├── package.json                  # NPM scripts & dependencies
+├── vite.config.ts                # Vite + Tailwind config
+├── tsconfig.json                 # TypeScript config
+├── vercel.json                   # Vercel SPA deployment config
+└── .env.example                  # Environment variable template
 ```
-
-### Key Subdirectories & File Roles
-
-*   `/src/components/Projects.tsx`: The largest component. Contains custom states, interactive calculators, and dashboard widgets that mock real-world operations for each of Gani's 5 major projects.
-*   `/src/data.ts`: Centralizes Gani's metrics, project roles, and descriptions. Editing this file immediately updates the texts and details across the entire application.
-*   `/src/index.css`: Imports the premium typography pairing (Archivo display, Inter body, JetBrains Mono indicators) and establishes the custom folder clip-paths.
 
 ---
 
-## 💻 Installation & Local Development Setup
+## 💻 Quick Start
 
-Follow these steps to configure and run the project locally.
-
-### 1. Prerequisites
-Ensure you have **Node.js** (v18.0.0 or higher) and **npm** (v10.0.0 or higher) installed on your system.
-
-### 2. Clone and Install Dependencies
-Navigate into the project root directory and run the following command to populate `node_modules`:
 ```bash
+# 1. Clone the repository
+git clone https://github.com/jettt017/Portofolio.git
+cd Portofolio
+
+# 2. Install dependencies
 npm install
-```
 
-### 3. Environment Configuration
-If you plan to utilize server-side functionalities or external API endpoints, create a `.env` file in the root based on `.env.example`:
-```bash
-cp .env.example .env
-```
-
-### 4. Spin up the Development Server
-Run the local Vite development server:
-```bash
+# 3. Start development server
 npm run dev
-```
-The server will boot, by default binding to port `3000` on host `0.0.0.0` (accessible locally via `http://localhost:3000`).
+# → http://localhost:3000
 
----
-
-## 📦 Build & Production Deployment
-
-To compile the application into lightweight, optimized static assets:
-
-```bash
+# 4. Build for production
 npm run build
 ```
 
-This generates a optimized production-ready bundle inside the `/dist` directory.
+---
 
-### Production Execution Script
-If your build requires node serving:
-```bash
-npm run start
+## 🚀 Deployment
+
+This project is deployed on **Vercel** with a pre-configured [`vercel.json`](./vercel.json):
+
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
 ```
 
-### Deploying to Cloud Services (Cloud Run / Vercel)
-The codebase is fully compatible with standard containerized runtime deployments (Google Cloud Run) or static Jamstack hosting providers (Vercel, Netlify):
-*   **Static SPA deployment:** Configure your hosting provider to point to the `/dist` directory. Ensure rewrite rules map all requests (`/*`) back to `index.html` to support smooth browser navigation.
-*   **Containerized deployment:** Deploy the pre-configured Cloud Run setup. The server will bind natively to the standard container ingress routing on port `3000`.
+Simply connect the GitHub repository to Vercel — it will detect the Vite framework and deploy automatically on every push to `main`.
 
 ---
 
-## 🏛️ Project Architecture
+## ⚡ Performance Highlights
 
-```
-                                  +-------------------+
-                                  |     index.html    |
-                                  +---------+---------+
-                                            |
-                                  +---------v---------+
-                                  |    src/main.tsx   |
-                                  +---------+---------+
-                                            |
-                                  +---------v---------+
-                                  |    src/App.tsx    |
-                                  +----+----+----+----+
-                                       |    |    |
-        +------------------------------+    |    +-----------------------------+
-        |                                   |                                  |
-+-------v---------+               +---------v-------+                +---------v--------+
-|   Hero.tsx      |               |  AboutMe.tsx    |                |  TechStack.tsx   |
-| (tactile folder)|               | (interactive-HUD|                | (double-tab tabs |
-+-----------------+               |  filter portrait|                |   with SVG logos)|
-                                  +-----------------+                +------------------+
-                                            |
-                                  +---------v---------+
-                                  |   Projects.tsx    |
-                                  | (live simulator   |
-                                  |   control panels) |
-                                  +---------+---------+
-                                            |
-                                  +---------v---------+
-                                  |Certifications.tsx |
-                                  | (resilient image  |
-                                  |   fallback stack) |
-                                  +---------+---------+
-                                            |
-                                  +---------v---------+
-                                  |    Contact.tsx    |
-                                  | (validation form) |
-                                  +-------------------+
-```
-
----
-
-## ⚡ Performance & Design Conventions
-
-1.  **Strict Responsive Density:** Every section operates desktop-first for precise card alignments, but implements robust mobile-first wrappers (`sm:`, `md:`, `lg:`) to resize cards, folders, and simulators on small screens. Touch targets are styled with a minimum hit space of `44px` on mobile layouts.
-2.  **No Image Layout Shifts:** The profile avatar viewport and the certificate cards operate with explicit aspect ratios (`aspect-square` and `aspect-[1.6]` respectively), ensuring the layout remains rock-solid while images are loaded.
-3.  **No Unsolicited SDKs / Zero AI-Slop:** The design is structurally clean. It does not clutter the page margin with mock server terminal feeds, simulated ping statuses, or unrequested features. Every layout component traces directly back to Gani's professional accomplishments.
-4.  **Optimized Vector Icons:** Rather than pulling in bulky external image directories, all brand icons in the skills section are loaded via optimized raw inline SVG paths, reducing DNS lookup overhead and speeding up overall load times.
+- 🏎️ **Vite build:** ~7.5s production compile, 432kB JS (131kB gzip)
+- 🎨 **0 Layout Shift:** Explicit aspect ratios on all image containers
+- 🔲 **Zero AI Slop:** Every component traces directly to real accomplishments
+- 📦 **Inline SVG Icons:** No external image lookups — all brand logos are vector paths
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the **MIT License**.
 
 ---
 
-## ✍️ Author
+<div align="center">
 
-*   **Gani Abi Saputra V.S.** — Computer Science Student at Universitas Pembangunan Nasional "Veteran" Jawa Timur.
-*   **Email:** [gamely017@gmail.com](mailto:gamely017@gmail.com)
-*   **GitHub:** [github.com/jettt017](https://github.com/jettt017)
+**✍️ Author**
+
+**Gani Abi Saputra V.S.**  
+Computer Science Student · UPN "Veteran" Jawa Timur
+
+[![Email](https://img.shields.io/badge/gamely017%40gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:gamely017@gmail.com)
+[![GitHub](https://img.shields.io/badge/jettt017-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/jettt017)
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=1C71D8&height=100&section=footer" alt="footer" width="100%"/>
+
+</div>
