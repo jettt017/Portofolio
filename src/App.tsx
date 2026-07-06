@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
-import { ArrowUp, Award, Folder, Mail, Phone, ExternalLink } from "lucide-react";
+import { ArrowUp, Award, Folder, Mail, Phone, ExternalLink, Menu, X } from "lucide-react";
 import Hero from "./components/Hero";
 import AboutMe from "./components/AboutMe";
 import TechStack from "./components/TechStack";
@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Framer Motion scroll progress indicator
   const { scrollYProgress } = useScroll();
@@ -51,10 +52,32 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => { document.body.style.overflow = "unset"; };
+  }, [isMobileMenuOpen]);
+
+  // Handle escape key to close mobile menu
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
+      setIsMobileMenuOpen(false);
     }
   };
 
@@ -63,15 +86,19 @@ export default function App() {
       
       {/* Dynamic Top Scroll Progress Bar */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-[3.5px] bg-brand-blue origin-[0%] z-50 shadow-sm"
+        className="fixed top-0 left-0 right-0 h-[3.5px] bg-brand-blue origin-[0%] z-[60] shadow-sm"
         style={{ scaleX }}
       />
 
       {/* Premium Sticky Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 bg-cream/70 backdrop-blur-md border-b border-near-black/5 py-4 px-6 md:px-12 flex justify-between items-center z-40 select-none">
+      <header className="fixed top-0 left-0 right-0 bg-cream/70 backdrop-blur-md border-b border-near-black/5 py-4 px-6 md:px-12 flex justify-between items-center z-50 select-none">
         <div 
           onClick={() => scrollToSection("home")}
-          className="flex items-center gap-2 cursor-pointer font-display font-black text-near-black hover:text-brand-blue transition-colors text-base"
+          className="flex items-center gap-2 cursor-pointer font-display font-black text-near-black hover:text-brand-blue transition-colors text-base relative z-50"
+          tabIndex={0}
+          role="button"
+          onKeyDown={(e) => e.key === 'Enter' && scrollToSection("home")}
+          aria-label="Home"
         >
           <Folder className="w-5 h-5 text-brand-blue" />
           <span>GANI ABI SAPUTRA V.S.</span>
@@ -101,12 +128,77 @@ export default function App() {
           ))}
         </nav>
 
-        {/* Mobile quick action indicator */}
-        <div className="flex md:hidden items-center gap-1">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span className="font-mono text-[9px] uppercase tracking-wider text-near-black/60">GANI_VS_2026</span>
+        {/* Mobile quick action indicator & Hamburger */}
+        <div className="flex md:hidden items-center gap-4 relative z-50">
+          <div className="flex items-center gap-1">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span className="font-mono text-[9px] uppercase tracking-wider text-near-black/60 sm:inline-block">GANI_VS_2026</span>
+          </div>
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 -mr-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </header>
+
+      {/* Full-screen Mobile Navigation Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 bg-cream z-40 flex flex-col pt-24 px-6 pb-6 md:hidden overflow-y-auto"
+            role="dialog"
+            aria-modal="true"
+          >
+            <nav className="flex flex-col gap-2 mt-4 font-display font-black text-4xl uppercase tracking-tight">
+              {[
+                { id: "home", label: "Hero" },
+                { id: "about", label: "Intro" },
+                { id: "skills", label: "Skills" },
+                { id: "projects", label: "Projects" },
+                { id: "certifications", label: "Certifications" },
+                { id: "contact", label: "Contact" }
+              ].map((sec, i) => (
+                <motion.button
+                  key={sec.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 + 0.1 }}
+                  onClick={() => scrollToSection(sec.id)}
+                  className={`text-left py-4 border-b border-near-black/10 transition-colors flex justify-between items-center ${
+                    activeSection === sec.id ? "text-brand-blue" : "text-near-black hover:text-brand-blue"
+                  }`}
+                >
+                  <span>{sec.label}</span>
+                  {activeSection === sec.id && <span className="text-brand-blue text-lg">●</span>}
+                </motion.button>
+              ))}
+            </nav>
+            
+            <div className="mt-auto pt-8">
+              <div className="flex items-center gap-2 font-mono text-xs text-near-black/50 mb-4">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>SYSTEM ONLINE</span>
+              </div>
+              <div className="flex gap-4 font-mono text-xs uppercase">
+                <a href="mailto:gamely017@gmail.com" className="text-near-black hover:text-brand-blue flex items-center gap-1">
+                  Email <ExternalLink className="w-3 h-3" />
+                </a>
+                <a href="https://github.com/jettt017" target="_blank" rel="noopener noreferrer" className="text-near-black hover:text-brand-blue flex items-center gap-1">
+                  GitHub <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Core Sections Stack */}
       <main className="pt-16">
