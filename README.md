@@ -125,11 +125,12 @@
 
 | Project | Role | Tech | Demo |
 |---------|------|------|------|
+| **JityGeld** — Premium Personal Finance Tracker | Full Stack Developer | Next.js 15, TypeScript, Supabase, Prisma | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://jity-geld.vercel.app/) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/jettt017/jityGeld) |
 | **MIA** — UMKM Discovery Platform | UI/UX Designer & Frontend Dev | React, CSS, Figma | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://mia-topaz-theta.vercel.app) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/rafienajwan/mia) |
 | **E-Cycle Platform** — AI Waste Manager | Frontend & Backend Dev | Next.js, Gemini API | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://e-cycleplatform.vercel.app) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/jettt017/e-cycle-platform) |
 | **GrinBuds** — Gamified Learning for Kids | UI/UX Designer & Frontend Dev | Next.js, Framer Motion | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://grinbuds2.vercel.app) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/KurioSannn/GRINBUDSV2) |
-| **Portalia** — Campus Marketplace UI/UX | UI/UX Designer | Figma, Prototyping | [![Figma](https://img.shields.io/badge/Prototype-F24E1E?style=flat-square&logo=figma&logoColor=white)](https://www.figma.com/proto/3VMKudtT9yFD84kgmcbeeS/) |
 | **NusaTales** — Cultural Storytelling Hub | Backend Developer | Laravel, PHP, MySQL | [![Live](https://img.shields.io/badge/Live-1C71D8?style=flat-square&logo=vercel&logoColor=white)](https://nusatales.isslab.web.id) [![GitHub](https://img.shields.io/badge/Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/viviovilala/nusatales) |
+| **Portalia** — Campus Marketplace UI/UX | UI/UX Designer | Figma, Prototyping | [![Figma](https://img.shields.io/badge/Prototype-F24E1E?style=flat-square&logo=figma&logoColor=white)](https://www.figma.com/proto/3VMKudtT9yFD84kgmcbeeS/) |
 
 ---
 
@@ -139,6 +140,7 @@
 Portofolio/
 ├── assets/
 │   ├── PhotoProfile.png          # Profile photo
+│   ├── Project-JityGeld.png      # JityGeld official banner
 │   └── Project-Portalia.png      # Portalia official banner
 ├── src/
 │   ├── App.tsx                   # Root layout, navigation, scroll progress
