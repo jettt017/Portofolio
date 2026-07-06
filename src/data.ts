@@ -46,6 +46,34 @@ export const SKILLS_AND_TOOLS = {
 
 export const PROJECTS: Project[] = [
   {
+    id: "jitygeld",
+    title: "JityGeld",
+    subtitle: "Premium Personal Finance Tracker",
+    role: "FULL STACK DEVELOPER",
+    description: "JityGeld is a premium personal finance management application that helps users monitor income, expenses, savings goals, and budgeting in one modern dashboard. The application provides interactive financial analytics, smart budgeting tools, transaction management, and insightful spending visualizations to help users build healthier financial habits.",
+    techStack: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Supabase",
+      "Recharts",
+      "Lucide React"
+    ],
+    contributions: [
+      "Designed the complete UI/UX system",
+      "Developed the entire frontend application",
+      "Built the backend architecture using Next.js App Router",
+      "Designed and implemented the PostgreSQL database with Prisma ORM",
+      "Integrated Supabase Authentication and Storage",
+      "Developed financial dashboards and interactive analytics",
+      "Implemented budgeting, savings goals, and transaction management",
+      "Optimized performance, responsive layouts, and user experience"
+    ],
+    link: "jity-geld.vercel.app"
+  },
+  {
     id: "mia",
     title: "Mia",
     subtitle: "Multimedia In Action Hackathon",
@@ -92,21 +120,6 @@ export const PROJECTS: Project[] = [
     link: "grinbuds2.vercel.app"
   },
   {
-    id: "portalia",
-    title: "Portalia",
-    subtitle: "Campus Marketplace Mobile App UI/UX Design",
-    role: "UI/UX Designer",
-    description: "Portalia is a mobile marketplace application designed to help students buy, sell, and manage products more efficiently within the campus environment. The application provides a modern and structured digital marketplace experience with features such as product listings, categories, chat, favorites, and user profile management in a user-friendly mobile interface.",
-    techStack: ["Figma", "UI/UX Design", "Wireframing", "Prototyping"],
-    contributions: [
-      "Designed modern and intuitive mobile UI/UX interfaces",
-      "Created user flows and marketplace interaction design",
-      "Developed responsive mobile app layouts and design systems",
-      "Focused on accessibility, usability, and user-centered design",
-      "Designed clean and organized marketplace experiences for students"
-    ]
-  },
-  {
     id: "nusatales",
     title: "Nusatales",
     subtitle: "Cultural Storytelling Platform",
@@ -121,6 +134,21 @@ export const PROJECTS: Project[] = [
       "Collaborated with team members during platform development"
     ],
     link: "nusatales.isslab.web.id"
+  },
+  {
+    id: "portalia",
+    title: "Portalia",
+    subtitle: "Campus Marketplace Mobile App UI/UX Design",
+    role: "UI/UX Designer",
+    description: "Portalia is a mobile marketplace application designed to help students buy, sell, and manage products more efficiently within the campus environment. The application provides a modern and structured digital marketplace experience with features such as product listings, categories, chat, favorites, and user profile management in a user-friendly mobile interface.",
+    techStack: ["Figma", "UI/UX Design", "Wireframing", "Prototyping"],
+    contributions: [
+      "Designed modern and intuitive mobile UI/UX interfaces",
+      "Created user flows and marketplace interaction design",
+      "Developed responsive mobile app layouts and design systems",
+      "Focused on accessibility, usability, and user-centered design",
+      "Designed clean and organized marketplace experiences for students"
+    ]
   }
 ];
 
