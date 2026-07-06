@@ -437,44 +437,16 @@ export default function Projects() {
   );
 
   // ─────────────────────────────────────────────────────────────────
-  // JityGeld static simulator
+  // JityGeld Fallback
   // ─────────────────────────────────────────────────────────────────
-  const JityGeldSimulator = (
-    <motion.div
-      key="sim-jitygeld"
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      className="w-full flex flex-col gap-3"
-    >
-      <div className="w-full flex-1 bg-[#FAF9F5] border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-center items-center text-near-black relative group" style={{ minHeight: "420px" }}>
-        <img 
-          src="/assets/Project-JityGeld.png" 
-          alt="JityGeld Premium Personal Finance Tracker" 
-          className="w-full h-full object-contain p-4 group-hover:scale-[1.02] transition-transform duration-500"
-        />
-      </div>
-      <div className="flex flex-wrap gap-2 mt-2">
-        <a
-          href="https://jity-geld.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white text-[11px] font-mono font-bold px-5 py-3 h-11 rounded-lg hover:bg-[#196ebf] transition-all shadow-sm cursor-pointer group min-w-[140px] select-none"
-        >
-          <Globe className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform" />
-          Live Demo
-        </a>
-        <a
-          href="https://github.com/jettt017/jityGeld"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 bg-near-black text-white text-[11px] font-mono font-bold px-5 py-3 h-11 rounded-lg hover:bg-near-black/80 transition-all shadow-sm cursor-pointer group min-w-[180px] select-none"
-        >
-          <Github className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
-          View GitHub Repository
-        </a>
-      </div>
-    </motion.div>
+  const JityGeldFallback = (
+    <div className="w-full flex justify-center" style={{ maxHeight: "220px", overflow: "hidden" }}>
+      <img 
+        src="/assets/Project-JityGeld.png" 
+        alt="JityGeld Preview Fallback" 
+        className="w-full h-full object-contain rounded-lg border border-near-black/10 max-h-[140px]"
+      />
+    </div>
   );
 
   // ─────────────────────────────────────────────────────────────────
@@ -612,8 +584,23 @@ export default function Projects() {
         <div className="lg:col-span-7 flex flex-col justify-start">
           <AnimatePresence mode="wait">
 
-            {/* JityGeld — static mockup */}
-            {activeTab === "jitygeld" && JityGeldSimulator}
+            {/* JityGeld — live iframe */}
+            {activeTab === "jitygeld" && (
+              <motion.div
+                key="embed-jitygeld"
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.4 }}
+              >
+                <BrowserEmbed
+                  url="jity-geld.vercel.app"
+                  projectId="jitygeld"
+                  githubUrl="https://github.com/jettt017/jityGeld"
+                  fallbackContent={JityGeldFallback}
+                />
+              </motion.div>
+            )}
 
             {/* MIA — live iframe */}
             {activeTab === "mia" && (
