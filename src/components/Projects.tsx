@@ -114,7 +114,7 @@ function BrowserEmbed({ url, projectId, githubUrl, fallbackContent }: BrowserEmb
                 href={fullUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-brand-blue text-white text-xs font-mono font-bold px-5 py-2.5 rounded-lg hover:bg-[#196ebf] transition-colors shadow-md cursor-pointer"
+                className="inline-flex items-center gap-2 bg-brand-blue text-white text-xs font-mono font-bold px-5 py-2.5 rounded-lg hover:bg-brand-blue-hover transition-colors shadow-md cursor-pointer"
               >
                 <Globe className="w-4 h-4" />
                 Launch Live Demo
@@ -143,7 +143,7 @@ function BrowserEmbed({ url, projectId, githubUrl, fallbackContent }: BrowserEmb
           href={fullUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-brand-blue text-white text-[11px] font-mono font-bold px-4 py-2.5 rounded-lg hover:bg-[#196ebf] transition-all shadow-sm cursor-pointer group"
+          className="inline-flex items-center gap-2 bg-brand-blue text-white text-[11px] font-mono font-bold px-4 py-2.5 rounded-lg hover:bg-brand-blue-hover transition-all shadow-sm cursor-pointer group"
         >
           <Globe className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform" />
           Launch Live Demo
@@ -568,7 +568,7 @@ export default function Projects() {
                       href={`https://${proj.link}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-mono text-brand-blue font-bold border-b-2 border-brand-blue pb-0.5 hover:text-[#196ebf] hover:border-[#196ebf] transition-all cursor-pointer group"
+                      className="inline-flex items-center gap-2 text-xs font-mono text-brand-blue font-bold border-b-2 border-brand-blue pb-0.5 hover:text-brand-blue-hover hover:border-brand-blue-hover transition-all cursor-pointer group"
                     >
                       {proj.link}
                       <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
