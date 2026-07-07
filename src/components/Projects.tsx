@@ -49,11 +49,11 @@ function BrowserEmbed({ url, projectId, githubUrl, fallbackContent }: BrowserEmb
     <div className="w-full flex flex-col gap-3">
 
       {/* ── Browser Chrome ── */}
-      <div className="w-full bg-white border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black"
+      <div className="w-full bg-card-bg border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black"
            style={{ minHeight: "420px" }}>
 
         {/* Title bar */}
-        <div className="bg-[#F0EFEF] px-4 py-2.5 flex items-center gap-3 border-b border-near-black/10 shrink-0">
+        <div className="bg-card-bg-light px-4 py-2.5 flex items-center gap-3 border-b border-near-black/10 shrink-0">
           {/* Traffic lights */}
           <div className="flex gap-1.5 shrink-0">
             <div className="w-3 h-3 rounded-full bg-rose-500 hover:bg-rose-600 transition-colors cursor-default" />
@@ -62,7 +62,7 @@ function BrowserEmbed({ url, projectId, githubUrl, fallbackContent }: BrowserEmb
           </div>
 
           {/* Address bar */}
-          <div className="flex-1 bg-white rounded-md border border-near-black/10 px-3 py-1 flex items-center gap-2 min-w-0">
+          <div className="flex-1 bg-card-bg-light rounded-md border border-near-black/10 px-3 py-1 flex items-center gap-2 min-w-0">
             <div className="w-3 h-3 shrink-0 text-emerald-600">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -152,7 +152,7 @@ function BrowserEmbed({ url, projectId, githubUrl, fallbackContent }: BrowserEmb
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-near-black text-white text-[11px] font-mono font-bold px-4 py-2.5 rounded-lg hover:bg-near-black/80 transition-all shadow-sm cursor-pointer group"
+          className="inline-flex items-center gap-2 bg-[#1A1A1A] text-white text-[11px] font-mono font-bold px-4 py-2.5 rounded-lg hover:bg-[#1A1A1A]/80 transition-all shadow-sm cursor-pointer group"
         >
           <Github className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
           View GitHub Repository
@@ -162,7 +162,7 @@ function BrowserEmbed({ url, projectId, githubUrl, fallbackContent }: BrowserEmb
             const leftPanel = document.querySelector(`[data-project-detail]`);
             leftPanel?.scrollIntoView({ behavior: "smooth" });
           }}
-          className="inline-flex items-center gap-2 bg-white border border-near-black/15 text-near-black text-[11px] font-mono font-bold px-4 py-2.5 rounded-lg hover:border-brand-blue hover:text-brand-blue transition-all shadow-sm cursor-pointer group"
+          className="inline-flex items-center gap-2 bg-card-bg border border-near-black/15 text-near-black text-[11px] font-mono font-bold px-4 py-2.5 rounded-lg hover:border-brand-blue hover:text-brand-blue transition-all shadow-sm cursor-pointer group"
         >
           <BookOpen className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
           View Case Study
@@ -192,7 +192,7 @@ function PortaliaActionBar() {
           const leftPanel = document.querySelector(`[data-project-detail]`);
           leftPanel?.scrollIntoView({ behavior: "smooth" });
         }}
-        className="inline-flex items-center gap-2 bg-white border border-near-black/15 text-near-black text-[11px] font-mono font-bold px-4 py-2.5 rounded-lg hover:border-brand-blue hover:text-brand-blue transition-all shadow-sm cursor-pointer group"
+        className="inline-flex items-center gap-2 bg-card-bg border border-near-black/15 text-near-black text-[11px] font-mono font-bold px-4 py-2.5 rounded-lg hover:border-brand-blue hover:text-brand-blue transition-all shadow-sm cursor-pointer group"
       >
         <BookOpen className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
         View Case Study
@@ -296,14 +296,14 @@ export default function Projects() {
   // ─────────────────────────────────────────────────────────────────
 
   const MiaFallback = (
-    <div className="w-full bg-white border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black" style={{ maxHeight: "220px" }}>
+    <div className="w-full bg-card-bg border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black" style={{ maxHeight: "220px" }}>
       <div className="bg-near-black/5 px-4 py-2 flex items-center justify-between border-b border-near-black/10">
         <div className="flex gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-rose-500" />
           <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
         </div>
-        <div className="bg-white px-4 py-0.5 rounded-md border text-[10px] font-mono text-near-black/60 w-1/2 text-center truncate">
+        <div className="bg-card-bg-light px-4 py-0.5 rounded-md border text-[10px] font-mono text-near-black/60 w-1/2 text-center truncate">
           mia-topaz-theta.vercel.app
         </div>
         <div className="w-6" />
@@ -341,7 +341,7 @@ export default function Projects() {
   );
 
   const EcycleFallback = (
-    <div className="w-full bg-[#FAFAF9] border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black" style={{ maxHeight: "220px" }}>
+    <div className="w-full bg-card-bg border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black" style={{ maxHeight: "220px" }}>
       <div className="bg-emerald-800 text-white px-4 py-2 flex justify-between items-center border-b">
         <div className="flex items-center gap-2">
           <Leaf className="w-3.5 h-3.5 text-emerald-400" />
@@ -359,7 +359,7 @@ export default function Projects() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <select value={ecycleDevice} onChange={(e) => setEcycleDevice(e.target.value)}
-              className="w-full bg-white border border-emerald-300 rounded p-1 text-[10px] focus:outline-emerald-600">
+              className="w-full bg-card-bg border border-emerald-300 rounded p-1 text-[10px] focus:outline-emerald-600">
               <option value="smartphone">📱 Smartphone</option>
               <option value="laptop">💻 Laptop</option>
               <option value="tablet">平板 Tablet</option>
@@ -367,7 +367,7 @@ export default function Projects() {
             </select>
             <input type="number" min="1" value={ecycleWeight}
               onChange={(e) => setEcycleWeight(Math.max(1, parseFloat(e.target.value) || 1))}
-              className="w-full bg-white border border-emerald-300 rounded p-1 text-[10px] focus:outline-emerald-600 font-mono" />
+              className="w-full bg-card-bg border border-emerald-300 rounded p-1 text-[10px] focus:outline-emerald-600 font-mono" />
           </div>
           <div className="flex justify-between items-center">
             <span className="text-[10px] font-bold text-emerald-700 font-mono">Rp {ecycleEstimatedVal.toLocaleString()}</span>
@@ -383,7 +383,7 @@ export default function Projects() {
 
   const GrinbudsFallback = (
     <div className="w-full flex justify-center" style={{ maxHeight: "220px", overflow: "hidden" }}>
-      <div className="w-[220px] bg-near-black rounded-[32px] p-2.5 border-4 border-near-black/80 shadow-2xl relative flex flex-col overflow-hidden" style={{ height: "210px" }}>
+      <div className="w-[220px] bg-[#1A1A1A] rounded-[32px] p-2.5 border-4 border-[#1A1A1A]/80 shadow-2xl relative flex flex-col overflow-hidden" style={{ height: "210px" }}>
         <div className="flex-1 bg-sky-50 rounded-[24px] overflow-hidden flex flex-col relative z-10 text-near-black select-none">
           <div className="bg-sky-400 text-white p-2 flex justify-between items-center text-xs shadow-xs">
             <span className="font-black tracking-tight font-display text-xs">GrinBuds</span>
@@ -391,14 +391,14 @@ export default function Projects() {
           </div>
           <div className="flex-1 p-3 flex flex-col justify-center text-center gap-2">
             <span className="text-[9px] font-semibold text-near-black/70">Huruf apakah ini?</span>
-            <div className="w-10 h-10 bg-white border-2 border-sky-300 rounded-xl flex items-center justify-center text-2xl font-extrabold text-sky-500 mx-auto shadow-sm">q</div>
+            <div className="w-10 h-10 bg-card-bg border-2 border-sky-300 rounded-xl flex items-center justify-center text-2xl font-extrabold text-sky-500 mx-auto shadow-sm">q</div>
             <div className="grid grid-cols-2 gap-1.5 max-w-[130px] mx-auto">
               {grinbudsOptions.map((opt) => (
                 <button key={opt} disabled={grinbudsFeedback !== null} onClick={() => handleGrinbudsSelect(opt)}
                   className={`w-10 h-10 rounded-xl font-black text-lg border-2 flex items-center justify-center transition-all cursor-pointer mx-auto ${
                     grinbudsSelectedOption === opt
                       ? opt === grinbudsAnswer ? "bg-emerald-400 border-emerald-600 text-white" : "bg-rose-400 border-rose-600 text-white"
-                      : "bg-white border-sky-200 text-near-black"
+                      : "bg-card-bg border-sky-200 text-near-black"
                   }`}>
                   {opt}
                 </button>
@@ -411,7 +411,7 @@ export default function Projects() {
   );
 
   const NusatalesFallback = (
-    <div className="w-full bg-[#FCFBF7] border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black" style={{ maxHeight: "220px" }}>
+    <div className="w-full bg-card-bg border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black" style={{ maxHeight: "220px" }}>
       <div className="bg-[#9333EA] text-white px-4 py-2 flex items-center justify-between border-b">
         <span className="font-display font-black text-xs tracking-tight">NUSATALES PORTAL</span>
         <div className="bg-white/10 px-3 py-0.5 rounded text-[9px] font-mono">nusatales.isslab.web.id</div>
@@ -460,7 +460,7 @@ export default function Projects() {
       exit={{ opacity: 0, scale: 0.95 }}
       className="w-full flex flex-col gap-3"
     >
-      <div className="w-full flex-1 bg-[#FAF9F5] border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-center items-center text-near-black relative group" style={{ minHeight: "420px" }}>
+      <div className="w-full flex-1 bg-card-bg-light border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-center items-center text-near-black relative group" style={{ minHeight: "420px" }}>
         <img 
           src="/assets/Project-Portalia.png" 
           alt="Portalia Official Showcase" 
