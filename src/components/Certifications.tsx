@@ -49,7 +49,7 @@ export default function Certifications() {
             {/* Card 1: Dicoding Certificate */}
             <motion.div 
               whileHover={{ y: -8 }}
-              className="bg-white rounded-2xl p-6 shadow-xl border border-white/20 flex flex-col justify-between min-h-[380px]"
+              className="bg-card-bg rounded-2xl p-6 shadow-xl border border-white/20 flex flex-col justify-between min-h-[380px]"
             >
               <div className="space-y-4">
                 {/* Header */}
@@ -71,7 +71,7 @@ export default function Certifications() {
               </div>
 
               {/* Real Certificate Image with robust fallback */}
-              <div className="mt-6 border border-near-black/10 rounded-xl overflow-hidden bg-[#FAF9F5] shadow-sm flex items-center justify-center aspect-[1.6] w-full relative">
+              <div className="mt-6 border border-near-black/10 rounded-xl overflow-hidden bg-card-bg-light shadow-sm flex items-center justify-center aspect-[1.6] w-full relative">
                 <img 
                   src={dicodingSrc} 
                   alt="Dicoding Certificate of Competence" 
@@ -103,7 +103,7 @@ export default function Certifications() {
             {/* Card 2: Laravel Course */}
             <motion.div 
               whileHover={{ y: -8 }}
-              className="bg-white rounded-2xl p-6 shadow-xl border border-white/20 flex flex-col justify-between min-h-[380px]"
+              className="bg-card-bg rounded-2xl p-6 shadow-xl border border-white/20 flex flex-col justify-between min-h-[380px]"
             >
               <div className="space-y-4">
                 {/* Header */}
@@ -125,7 +125,7 @@ export default function Certifications() {
               </div>
 
               {/* Real Certificate Image with robust fallback */}
-              <div className="mt-6 border border-near-black/10 rounded-xl overflow-hidden bg-[#FAF9F5] shadow-sm flex items-center justify-center aspect-[1.6] w-full relative">
+              <div className="mt-6 border border-near-black/10 rounded-xl overflow-hidden bg-card-bg-light shadow-sm flex items-center justify-center aspect-[1.6] w-full relative">
                 <img 
                   src={laravelSrc} 
                   alt="Laravel Course Completion Certificate" 
