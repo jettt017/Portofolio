@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
-import { ArrowUp, Award, Folder, Mail, Phone, ExternalLink, Menu, X } from "lucide-react";
+import { ArrowUp, Award, Folder, Mail, Phone, ExternalLink, Menu, X, Sun, Moon } from "lucide-react";
 import Hero from "./components/Hero";
 import AboutMe from "./components/AboutMe";
 import TechStack from "./components/TechStack";
@@ -12,6 +12,23 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   // Framer Motion scroll progress indicator
   const { scrollYProgress } = useScroll();
@@ -104,36 +121,55 @@ export default function App() {
           <span>GANI ABI SAPUTRA V.S.</span>
         </div>
 
-        {/* Dynamic Nav Menu Anchors */}
-        <nav className="hidden md:flex gap-1.5 font-mono text-xs font-bold uppercase tracking-wider">
-          {[
-            { id: "home", label: "Hero" },
-            { id: "about", label: "Intro" },
-            { id: "skills", label: "Skills" },
-            { id: "projects", label: "Projects" },
-            { id: "certifications", label: "Certifications" },
-            { id: "contact", label: "Contact" }
-          ].map((sec) => (
-            <button
-              key={sec.id}
-              onClick={() => scrollToSection(sec.id)}
-              className={`px-3 py-1.5 rounded-full transition-all cursor-pointer ${
-                activeSection === sec.id
-                  ? "bg-brand-blue text-white shadow-xs"
-                  : "text-near-black/50 hover:text-near-black hover:bg-near-black/5"
-              }`}
-            >
-              {sec.label}
-            </button>
-          ))}
-        </nav>
+        {/* Dynamic Nav Menu Anchors & Dark Mode Toggle */}
+        <div className="hidden md:flex items-center gap-4">
+          <nav className="flex gap-1.5 font-mono text-xs font-bold uppercase tracking-wider">
+            {[
+              { id: "home", label: "Hero" },
+              { id: "about", label: "Intro" },
+              { id: "skills", label: "Skills" },
+              { id: "projects", label: "Projects" },
+              { id: "certifications", label: "Certifications" },
+              { id: "contact", label: "Contact" }
+            ].map((sec) => (
+              <button
+                key={sec.id}
+                onClick={() => scrollToSection(sec.id)}
+                className={`px-3 py-1.5 rounded-full transition-all cursor-pointer ${
+                  activeSection === sec.id
+                    ? "bg-brand-blue text-white shadow-xs"
+                    : "text-near-black/50 hover:text-near-black hover:bg-near-black/5"
+                }`}
+              >
+                {sec.label}
+              </button>
+            ))}
+          </nav>
+          
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer h-9 w-9 flex items-center justify-center border border-near-black/10"
+            aria-label="Toggle theme"
+          >
+            {darkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
+          </button>
+        </div>
 
         {/* Mobile quick action indicator & Hamburger */}
-        <div className="flex md:hidden items-center gap-4 relative z-50">
-          <div className="flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <div className="flex md:hidden items-center gap-2 relative z-50">
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer h-9 w-9 flex items-center justify-center border border-near-black/10"
+            aria-label="Toggle theme"
+          >
+            {darkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
+          </button>
+          
+          <div className="flex items-center gap-1 bg-near-black/5 px-2.5 py-1.5 rounded-full border border-near-black/5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             <span className="font-mono text-[9px] uppercase tracking-wider text-near-black/60 sm:inline-block">GANI_VS_2026</span>
           </div>
+          
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="p-2 -mr-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer"
