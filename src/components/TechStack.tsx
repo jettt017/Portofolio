@@ -117,7 +117,7 @@ export default function TechStack() {
             {/* Frontend Column */}
             <motion.div 
               whileHover={{ y: -6 }}
-              className="bg-white/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
+              className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
             >
               <div>
                 <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-near-black/5">
@@ -149,7 +149,7 @@ export default function TechStack() {
             {/* Backend Column */}
             <motion.div 
               whileHover={{ y: -6 }}
-              className="bg-white/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
+              className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
             >
               <div>
                 <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-near-black/5">
@@ -181,7 +181,7 @@ export default function TechStack() {
             {/* Tools Column */}
             <motion.div 
               whileHover={{ y: -6 }}
-              className="bg-white/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
+              className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
             >
               <div>
                 <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-near-black/5">
