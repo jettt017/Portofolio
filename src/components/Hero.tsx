@@ -42,7 +42,7 @@ export default function Hero({ type }: HeroProps) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
             whileHover={{ y: -30 }}
-            className="absolute bottom-[40%] w-[85%] h-[55%] bg-white rounded-t-lg shadow-sm border border-near-black/5 flex flex-col p-4 justify-between"
+            className="absolute bottom-[40%] w-[85%] h-[55%] bg-card-bg rounded-t-lg shadow-sm border border-near-black/5 flex flex-col p-4 justify-between"
           >
             <div className="space-y-1.5">
               <div className="h-2 w-1/3 bg-brand-blue/20 rounded"></div>
@@ -88,7 +88,7 @@ export default function Hero({ type }: HeroProps) {
             animate={{ x: 0, rotate: -12, opacity: 1 }}
             transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
             whileHover={{ rotate: -5, scale: 1.05 }}
-            className="absolute -left-4 sm:left-4 top-[35%] w-56 sm:w-64 bg-near-black text-white p-4 rounded-xl shadow-2xl flex flex-col justify-between h-24 border border-white/10"
+            className="absolute -left-4 sm:left-4 top-[35%] w-56 sm:w-64 bg-[#1A1A1A] text-white p-4 rounded-xl shadow-2xl flex flex-col justify-between h-24 border border-white/10"
           >
             <div className="flex justify-between items-start">
               <span className="text-xs font-sans font-medium text-white/50">2026 Edition</span>
