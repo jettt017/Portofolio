@@ -102,7 +102,7 @@ export default function Contact() {
           </p>
 
           {/* Interactive Card Container */}
-          <div className="bg-near-black text-white rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden min-h-[350px] border border-white/5 flex flex-col justify-between">
+          <div className="bg-[#1A1A1A] text-white rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden min-h-[350px] border border-white/5 flex flex-col justify-between">
             
             {/* Folder tab design internally */}
             <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-6">
@@ -115,7 +115,7 @@ export default function Contact() {
                 <button 
                   onClick={() => setActiveView("info")}
                   className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase cursor-pointer transition-colors ${
-                    activeView === "info" ? "bg-white text-near-black font-bold" : "bg-white/10 text-white/70 hover:bg-white/20"
+                    activeView === "info" ? "bg-white text-[#1A1A1A] font-bold" : "bg-white/10 text-white/70 hover:bg-white/20"
                   }`}
                 >
                   Contacts
@@ -123,7 +123,7 @@ export default function Contact() {
                 <button 
                   onClick={() => setActiveView("form")}
                   className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase cursor-pointer transition-colors ${
-                    activeView === "form" ? "bg-white text-near-black font-bold" : "bg-white/10 text-white/70 hover:bg-white/20"
+                    activeView === "form" ? "bg-white text-[#1A1A1A] font-bold" : "bg-white/10 text-white/70 hover:bg-white/20"
                   }`}
                 >
                   Message Form
@@ -277,7 +277,7 @@ export default function Contact() {
               </div>
               <div className="space-y-2 max-h-[220px] overflow-y-auto pr-2">
                 {savedMessages.map((msg) => (
-                  <div key={msg.id} className="bg-white border rounded-xl p-3 flex justify-between items-start text-xs shadow-xs hover:border-brand-blue transition-colors">
+                  <div key={msg.id} className="bg-card-bg border rounded-xl p-3 flex justify-between items-start text-xs shadow-xs hover:border-brand-blue transition-colors">
                     <div className="space-y-1 text-left flex-1">
                       <div className="flex justify-between items-center">
                         <span className="font-bold text-near-black">{msg.name}</span>
