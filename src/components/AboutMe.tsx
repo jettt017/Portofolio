@@ -45,7 +45,7 @@ export default function AboutMe() {
               const el = document.getElementById("skills");
               if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
-            className="bg-[#1D6FB8] hover:bg-brand-blue text-white/90 hover:text-white px-8 py-3 rounded-t-2xl font-mono text-sm tracking-wider flex items-center gap-2 cursor-pointer border-t border-x border-near-black/5 transition-colors"
+            className="bg-brand-blue-inactive hover:bg-brand-blue text-white/90 hover:text-white px-8 py-3 rounded-t-2xl font-mono text-sm tracking-wider flex items-center gap-2 cursor-pointer border-t border-x border-near-black/5 transition-colors"
           >
             SKILLS & TOOLS
             <ChevronRight className="w-4 h-4 text-white/30" />
