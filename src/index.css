@@ -5,6 +5,8 @@
   --cream: #F6F3E8;
   --near-black: #1A1A1A;
   --brand-blue: #2F8DEB;
+  --brand-blue-inactive: #1D6FB8;
+  --brand-blue-hover: #196ebf;
   
   --card-bg: #FFFFFF;
   --card-bg-light: #FAF9F5;
@@ -13,7 +15,9 @@
 :root.dark {
   --cream: #121212;
   --near-black: #F6F3E8;
-  --brand-blue: #3b94fc;
+  --brand-blue: #1e3a8a;            /* Deep navy blue */
+  --brand-blue-inactive: #11224d;   /* Darker navy blue for inactive tabs */
+  --brand-blue-hover: #2547a3;      /* Slightly lighter blue for dark mode hover */
   
   --card-bg: #1E1E1E;
   --card-bg-light: #252525;
@@ -27,6 +31,8 @@
   --color-cream: var(--cream);
   --color-near-black: var(--near-black);
   --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-inactive: var(--brand-blue-inactive);
+  --color-brand-blue-hover: var(--brand-blue-hover);
   
   --color-card-bg: var(--card-bg);
   --color-card-bg-light: var(--card-bg-light);
