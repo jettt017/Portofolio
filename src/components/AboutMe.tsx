@@ -130,9 +130,9 @@ export default function AboutMe() {
           <div className="w-full lg:w-[60%] flex flex-col justify-center text-white z-10 space-y-6">
             
             {/* White Speech Bubble Badge */}
-            <div className="self-start relative bg-white text-near-black px-6 py-2.5 rounded-full font-display font-black text-lg shadow-lg">
+            <div className="self-start relative bg-card-bg text-near-black px-6 py-2.5 rounded-full font-display font-black text-lg shadow-lg">
               Hi! I’m Gani
-              <div className="absolute -bottom-2 left-6 w-0 h-0 border-t-[8px] border-t-white border-r-[8px] border-r-transparent"></div>
+              <div className="absolute -bottom-2 left-6 w-0 h-0 border-t-[8px] border-t-card-bg border-r-[8px] border-r-transparent"></div>
             </div>
 
             {/* Massive Heading */}
