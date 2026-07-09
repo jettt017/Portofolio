@@ -73,10 +73,18 @@ export default function TechStack() {
       <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full mt-10 md:mt-16">
         
         {/* Double Folder Tabs Header */}
-        <div className="flex flex-col sm:flex-row gap-2 relative z-10 -mb-[2px] px-2">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col sm:flex-row gap-2 relative z-10 -mb-[2px] px-2"
+        >
           
           {/* Inactive Introduction Tab */}
-          <button 
+          <motion.button 
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98, y: 0 }}
             onClick={() => {
               const el = document.getElementById("about");
               if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -85,7 +93,7 @@ export default function TechStack() {
           >
             INTRODUCTION
             <ChevronRight className="w-4 h-4 text-white/30" />
-          </button>
+          </motion.button>
 
           {/* Active Skills & Tools Tab */}
           <div className="relative bg-brand-blue text-white px-8 py-3 rounded-t-2xl font-mono text-sm tracking-wider flex items-center gap-2 cursor-default border-t border-x border-brand-blue">
@@ -93,29 +101,45 @@ export default function TechStack() {
             SKILLS & TOOLS
             <ChevronRight className="w-4 h-4 text-white/50" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Main Blue Banner Container */}
-        <div className="bg-brand-blue rounded-r-3xl rounded-bl-3xl p-8 md:p-12 shadow-2xl flex flex-col gap-10 justify-between relative overflow-hidden min-h-[600px]">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="bg-brand-blue rounded-r-3xl rounded-bl-3xl p-8 md:p-12 shadow-2xl flex flex-col gap-10 justify-between relative overflow-hidden min-h-[600px]"
+        >
           
           {/* Subtle grid accent background */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0c_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0c_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
           {/* Large Title Section */}
-          <div className="text-center md:text-left z-10 space-y-2">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-center md:text-left z-10 space-y-2"
+          >
             <h2 className="text-5xl md:text-7xl font-black font-display tracking-tight text-white uppercase leading-none">
               Tech Stack
             </h2>
             <p className="text-white/60 font-mono text-xs uppercase tracking-widest">
               BUILDING MODERN AND SCALABLE DIGITAL SOLUTIONS
             </p>
-          </div>
+          </motion.div>
 
           {/* Three Categorized Columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 z-10">
             
             {/* Frontend Column */}
             <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.15 }}
               whileHover={{ y: -6 }}
               className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
             >
@@ -148,6 +172,10 @@ export default function TechStack() {
 
             {/* Backend Column */}
             <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.25 }}
               whileHover={{ y: -6 }}
               className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
             >
@@ -180,6 +208,10 @@ export default function TechStack() {
 
             {/* Tools Column */}
             <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.35 }}
               whileHover={{ y: -6 }}
               className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
             >
@@ -210,7 +242,7 @@ export default function TechStack() {
               </div>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Decorative Slide Indicator */}
