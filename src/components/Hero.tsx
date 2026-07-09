@@ -116,7 +116,12 @@ export default function Hero({ type }: HeroProps) {
       </div>
 
       {/* Footer Texts (Faithful bottom alignment) */}
-      <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mt-8 pt-4 border-t border-near-black/10 text-near-black">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
+        className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mt-8 pt-4 border-t border-near-black/10 text-near-black"
+      >
         <div className="max-w-xs font-display font-black tracking-tight text-lg md:text-xl leading-snug">
           {isMain 
             ? "BUILDING IDEAS INTO REALITY." 
@@ -130,7 +135,7 @@ export default function Hero({ type }: HeroProps) {
             { PERSONAL_INFO.title }
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
