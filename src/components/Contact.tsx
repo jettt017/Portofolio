@@ -94,7 +94,13 @@ export default function Contact() {
         </div>
 
         {/* Right Column: Descriptions & Interactive Dark Container */}
-        <div className="lg:col-span-7 space-y-8 text-left">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="lg:col-span-7 space-y-8 text-left"
+        >
           
           {/* Slogan */}
           <p className="text-xl md:text-2xl font-black font-display text-near-black leading-snug tracking-tight uppercase">
@@ -112,22 +118,26 @@ export default function Contact() {
               </span>
               
               <div className="flex gap-2">
-                <button 
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveView("info")}
                   className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase cursor-pointer transition-colors ${
                     activeView === "info" ? "bg-white text-[#1A1A1A] font-bold" : "bg-white/10 text-white/70 hover:bg-white/20"
                   }`}
                 >
                   Contacts
-                </button>
-                <button 
+                </motion.button>
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveView("form")}
                   className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase cursor-pointer transition-colors ${
                     activeView === "form" ? "bg-white text-[#1A1A1A] font-bold" : "bg-white/10 text-white/70 hover:bg-white/20"
                   }`}
                 >
                   Message Form
-                </button>
+                </motion.button>
               </div>
             </div>
 
@@ -250,13 +260,15 @@ export default function Contact() {
                         />
                       </div>
 
-                      <button 
+                      <motion.button 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                         type="submit" 
                         className="w-full bg-brand-blue hover:bg-brand-blue-hover text-white font-bold text-xs py-2.5 rounded-lg flex items-center justify-center gap-2 cursor-pointer transition-colors shadow-lg"
                       >
                         <Send className="w-3.5 h-3.5" />
                         Send Message
-                      </button>
+                      </motion.button>
                     </form>
                   )}
                 </motion.div>
@@ -299,7 +311,7 @@ export default function Contact() {
             </motion.div>
           )}
 
-        </div>
+        </motion.div>
       </div>
 
       {/* Decorative Slide Indicator */}
