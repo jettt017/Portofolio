@@ -19,35 +19,57 @@ export default function Certifications() {
       <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full mt-10 md:mt-16">
         
         {/* Folder tab */}
-        <div className="flex relative z-10 -mb-[2px] px-2">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="flex relative z-10 -mb-[2px] px-2"
+        >
           <div className="relative bg-brand-blue text-white px-8 py-3 rounded-t-2xl font-mono text-sm tracking-wider flex items-center gap-2 cursor-default border-t border-x border-brand-blue">
             <GraduationCap className="w-4 h-4 text-white" />
             COURSES & CERTIFICATIONS
             <ChevronRight className="w-4 h-4 text-white/50" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Main Blue Banner Container */}
-        <div className="bg-brand-blue rounded-r-3xl rounded-bl-3xl p-8 md:p-12 shadow-2xl flex flex-col gap-10 relative overflow-hidden min-h-[500px]">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="bg-brand-blue rounded-r-3xl rounded-bl-3xl p-8 md:p-12 shadow-2xl flex flex-col gap-10 relative overflow-hidden min-h-[500px]"
+        >
           
           {/* Subtle grid background */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0c_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0c_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
           {/* Heading */}
-          <div className="text-center md:text-left z-10 space-y-1">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-center md:text-left z-10 space-y-1"
+          >
             <h2 className="text-4xl md:text-6xl font-black font-display tracking-tight text-white uppercase leading-none">
               Certifications
             </h2>
             <p className="text-white/60 font-mono text-xs uppercase tracking-widest">
               EDUCATIONAL TRAINING AND PROFESSIONAL ACHIEVEMENTS
             </p>
-          </div>
+          </motion.div>
 
           {/* Dual Certification Cards Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 z-10">
             
             {/* Card 1: Dicoding Certificate */}
             <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.15 }}
               whileHover={{ y: -8 }}
               className="bg-card-bg rounded-2xl p-6 shadow-xl border border-white/20 flex flex-col justify-between min-h-[380px]"
             >
@@ -102,6 +124,10 @@ export default function Certifications() {
 
             {/* Card 2: Laravel Course */}
             <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.25 }}
               whileHover={{ y: -8 }}
               className="bg-card-bg rounded-2xl p-6 shadow-xl border border-white/20 flex flex-col justify-between min-h-[380px]"
             >
@@ -155,7 +181,7 @@ export default function Certifications() {
             </motion.div>
 
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Decorative Slide Indicator */}
