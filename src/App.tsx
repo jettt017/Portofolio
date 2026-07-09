@@ -146,38 +146,44 @@ export default function App() {
             ))}
           </nav>
           
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer h-9 w-9 flex items-center justify-center border border-near-black/10"
             aria-label="Toggle theme"
           >
             {darkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile quick action indicator & Hamburger */}
         <div className="flex md:hidden items-center gap-2 relative z-50">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer h-9 w-9 flex items-center justify-center border border-near-black/10"
             aria-label="Toggle theme"
           >
             {darkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
-          </button>
+          </motion.button>
           
           <div className="flex items-center gap-1 bg-near-black/5 px-2.5 py-1.5 rounded-full border border-near-black/5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             <span className="font-mono text-[9px] uppercase tracking-wider text-near-black/60 sm:inline-block">GANI_VS_2026</span>
           </div>
           
-          <button 
+          <motion.button 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="p-2 -mr-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          </motion.button>
         </div>
       </header>
 
@@ -330,8 +336,10 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
+            whileHover={{ scale: 1.1, rotate: 12 }}
+            whileTap={{ scale: 0.9 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white flex items-center justify-center shadow-2xl border border-white/10 cursor-pointer hover:rotate-12 transition-transform"
+            className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white flex items-center justify-center shadow-2xl border border-white/10 cursor-pointer"
           >
             <ArrowUp className="w-5 h-5" />
           </motion.button>
