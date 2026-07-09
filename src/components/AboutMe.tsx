@@ -30,7 +30,13 @@ export default function AboutMe() {
       <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full mt-10 md:mt-16">
         
         {/* Double Tab Folders Header */}
-        <div className="flex flex-col sm:flex-row gap-2 relative z-10 -mb-[2px] px-2">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col sm:flex-row gap-2 relative z-10 -mb-[2px] px-2"
+        >
           
           {/* Active Introduction Tab */}
           <div className="relative bg-brand-blue text-white px-8 py-3 rounded-t-2xl font-mono text-sm tracking-wider flex items-center gap-2 cursor-default border-t border-x border-brand-blue">
@@ -40,7 +46,9 @@ export default function AboutMe() {
           </div>
 
           {/* Inactive Skills & Tools Tab (Scrolls to Skills) */}
-          <button 
+          <motion.button 
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98, y: 0 }}
             onClick={() => {
               const el = document.getElementById("skills");
               if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -49,17 +57,29 @@ export default function AboutMe() {
           >
             SKILLS & TOOLS
             <ChevronRight className="w-4 h-4 text-white/30" />
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         {/* Main Blue Banner Container */}
-        <div className="bg-brand-blue rounded-r-3xl rounded-bl-3xl p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-12 items-center relative overflow-hidden min-h-[500px]">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="bg-brand-blue rounded-r-3xl rounded-bl-3xl p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-12 items-center relative overflow-hidden min-h-[500px]"
+        >
           
           {/* Subtle grid accent background */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0c_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0c_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
           {/* Left Column: Interactive Retro Browser Mockup */}
-          <div className="w-full lg:w-[40%] flex justify-center z-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="w-full lg:w-[40%] flex justify-center z-10"
+          >
             <motion.div 
               whileHover={{ y: -8, rotate: -1 }}
               className="w-full max-w-md bg-[#DFDBC5] border-4 border-white shadow-2xl rounded-t-2xl overflow-hidden flex flex-col"
@@ -124,10 +144,16 @@ export default function AboutMe() {
                 </span>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Content */}
-          <div className="w-full lg:w-[60%] flex flex-col justify-center text-white z-10 space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full lg:w-[60%] flex flex-col justify-center text-white z-10 space-y-6"
+          >
             
             {/* White Speech Bubble Badge */}
             <div className="self-start relative bg-card-bg text-near-black px-6 py-2.5 rounded-full font-display font-black text-lg shadow-lg">
@@ -169,8 +195,8 @@ export default function AboutMe() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Decorative Slide Indicator */}
