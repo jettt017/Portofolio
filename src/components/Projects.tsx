@@ -478,7 +478,13 @@ export default function Projects() {
     <section id="projects" className="min-h-screen w-full bg-cream py-12 px-6 md:px-12 flex flex-col justify-between border-b border-near-black/10">
 
       {/* ── Tab Select Header ── */}
-      <div className="max-w-7xl mx-auto w-full mb-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.5 }}
+        className="max-w-7xl mx-auto w-full mb-8"
+      >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-near-black/10 pb-4">
           <div>
             <h2 className="text-3xl md:text-5xl font-black font-display text-near-black uppercase tracking-tight">
@@ -491,8 +497,10 @@ export default function Projects() {
 
           <div className="flex flex-wrap gap-1.5 pt-2">
             {PROJECTS.map((proj) => (
-              <button
+              <motion.button
                 key={proj.id}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98, y: 0 }}
                 onClick={() => setActiveTab(proj.id)}
                 className={`px-4 py-2 font-mono text-xs uppercase tracking-wider rounded-t-lg border-t border-x transition-all cursor-pointer ${
                   activeTab === proj.id
@@ -501,14 +509,20 @@ export default function Projects() {
                 }`}
               >
                 📁 {proj.title}
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ── Main 12-col Grid ── */}
-      <div className="max-w-7xl mx-auto w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start my-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="max-w-7xl mx-auto w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start my-6"
+      >
 
         {/* Left: Editorial description */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8 p-1" data-project-detail>
@@ -679,7 +693,7 @@ export default function Projects() {
 
           </AnimatePresence>
         </div>
-      </div>
+      </motion.div>
 
       {/* ── Decorative Slide Indicator ── */}
       <div className="max-w-7xl mx-auto w-full flex justify-between items-center text-xs font-mono text-near-black/50 border-t border-near-black/10 pt-4">
