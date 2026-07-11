@@ -7,8 +7,10 @@ import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
+import Loader from "./components/Loader";
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -69,15 +71,15 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent body scroll when mobile menu is open or page is loading
   useEffect(() => {
-    if (isMobileMenuOpen) {
+    if (isMobileMenuOpen || isLoading) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
     return () => { document.body.style.overflow = "unset"; };
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, isLoading]);
 
   // Handle escape key to close mobile menu
   useEffect(() => {
@@ -100,6 +102,12 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-cream selection:bg-brand-blue selection:text-white overflow-hidden text-near-black">
+      
+      <AnimatePresence>
+        {isLoading && (
+          <Loader onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
       
       {/* Dynamic Top Scroll Progress Bar */}
       <motion.div 
