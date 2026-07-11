@@ -76,7 +76,7 @@ export default function TechStack() {
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.5 }}
           className="flex flex-col sm:flex-row gap-2 relative z-10 -mb-[2px] px-2"
         >
@@ -107,7 +107,7 @@ export default function TechStack() {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="bg-brand-blue rounded-r-3xl rounded-bl-3xl p-8 md:p-12 shadow-2xl flex flex-col gap-10 justify-between relative overflow-hidden min-h-[600px]"
         >
@@ -119,7 +119,7 @@ export default function TechStack() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-center md:text-left z-10 space-y-2"
           >
@@ -138,7 +138,7 @@ export default function TechStack() {
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.15 }}
               whileHover={{ y: -6 }}
               className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
@@ -174,7 +174,7 @@ export default function TechStack() {
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.25 }}
               whileHover={{ y: -6 }}
               className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
@@ -210,7 +210,7 @@ export default function TechStack() {
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.35 }}
               whileHover={{ y: -6 }}
               className="bg-card-bg/95 rounded-2xl p-6 flex flex-col justify-between shadow-xl border border-white/25 min-h-[340px]"
