@@ -115,7 +115,7 @@ export default function AboutMe() {
                       src="/assets/PhotoProfile.png" 
                       alt="Gani Portrait Mockup" 
                       referrerPolicy="no-referrer"
-                      className={`w-full h-full object-cover transition-all duration-300 ${filters[filterIndex].class}`}
+                      className={`w-full h-full object-cover object-top transition-all duration-300 ${filters[filterIndex].class}`}
                     />
                   </motion.div>
                 </AnimatePresence>
