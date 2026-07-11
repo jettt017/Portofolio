@@ -81,7 +81,7 @@ export default function Contact() {
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
             className="text-[14vw] lg:text-[7vw] font-black font-display text-brand-blue uppercase leading-[0.85] tracking-tighter"
           >
@@ -97,7 +97,7 @@ export default function Contact() {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className="lg:col-span-7 space-y-8 text-left"
         >
