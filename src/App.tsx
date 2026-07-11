@@ -125,7 +125,7 @@ export default function App() {
         <div className="hidden md:flex items-center gap-4">
           <nav className="flex gap-1.5 font-mono text-xs font-bold uppercase tracking-wider">
             {[
-              { id: "home", label: "Hero" },
+              { id: "home", label: "Home" },
               { id: "about", label: "Intro" },
               { id: "skills", label: "Skills" },
               { id: "projects", label: "Projects" },
@@ -201,7 +201,7 @@ export default function App() {
           >
             <nav className="flex flex-col gap-2 mt-4 font-display font-black text-4xl uppercase tracking-tight">
               {[
-                { id: "home", label: "Hero" },
+                { id: "home", label: "Home" },
                 { id: "about", label: "Intro" },
                 { id: "skills", label: "Skills" },
                 { id: "projects", label: "Projects" },
