@@ -33,7 +33,7 @@ export default function AboutMe() {
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.5 }}
           className="flex flex-col sm:flex-row gap-2 relative z-10 -mb-[2px] px-2"
         >
@@ -64,7 +64,7 @@ export default function AboutMe() {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="bg-brand-blue rounded-r-3xl rounded-bl-3xl p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-12 items-center relative overflow-hidden min-h-[500px]"
         >
@@ -76,7 +76,7 @@ export default function AboutMe() {
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="w-full lg:w-[40%] flex justify-center z-10"
           >
@@ -150,7 +150,7 @@ export default function AboutMe() {
           <motion.div 
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full lg:w-[60%] flex flex-col justify-center text-white z-10 space-y-6"
           >
