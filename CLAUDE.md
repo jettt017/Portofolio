@@ -236,6 +236,16 @@ This section logs the sequential prompt pipeline used to design, refine, and per
 *   **Result:** Synchronized coordinate states of dual spring pools (`trackX`/`trackY` and `slowX`/`slowY`) inside `onMouseMove` at the exact frames of state transition.
 *   **Notes:** Eliminates teleportation jumps, delivering a completely fluid transition when entering and leaving magnetic fields.
 
+## Feature: Unified Circular Cursor Hover Shape
+*   **Date:** July 12, 2026
+*   **Purpose:** Enforce a perfect circle hover shape for all components across the entire website.
+*   **Prompt:**
+    ```text
+    Remove all paper/folder rounded-square morphing codes and parameters from MagneticCursor.tsx so that the custom cursor outer ring is always a perfect circle (50% border-radius) on all elements, maintaining a unified visual identity.
+    ```
+*   **Result:** Cleaned up `MagneticCursor.tsx` by removing `hoverType` string states and the `"paper"` check. Enforced `borderRadius: "50%"` directly on the ring style.
+*   **Notes:** Simplifies the state machine and makes the cursor shape look 100% consistent across all components.
+
 ---
 
 ## 🗺️ Asset Mapping

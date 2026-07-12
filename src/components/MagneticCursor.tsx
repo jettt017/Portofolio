@@ -17,15 +17,12 @@ export default function MagneticCursor() {
   const rawX = useMotionValue(-100);
   const rawY = useMotionValue(-100);
 
-
-
-  // ─── Ring visual springs (size / radius / scale) ────────────────────────────
+  // ─── Ring visual springs (size / scale) ──────────────────────────────────────
   const ringSize   = useSpring(32, SPRING_SCALE);
-  const ringRadius = useMotionValue(50); // percent — spring not needed, snap is fine
   const ringScale  = useSpring(1, SPRING_SCALE);
 
   // ─── Interaction state (primitives only in deps) ─────────────────────────────
-  const [hoverType, setHoverType] = useState<"default" | "clickable" | "paper">("default");
+  const [isHovered, setIsHovered] = useState(false);
   const [isMagnetic, setIsMagnetic] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
 
@@ -85,10 +82,7 @@ export default function MagneticCursor() {
         // Set target positions for the slow magnetic spring
         snapX.set(cx);
         snapY.set(cy);
-
-        // Hover type
-        const attr = (nearest as HTMLElement).getAttribute("data-magnetic");
-        setHoverType(attr === "paper" || attr === "folder" ? "paper" : "clickable");
+        setIsHovered(true);
       } else {
         magneticCenterRef.current = null;
 
@@ -103,13 +97,13 @@ export default function MagneticCursor() {
           setIsMagnetic(false);
         }
 
-        // Hover type from element under cursor
+        // Hover check for element under cursor
         const target = e.target as HTMLElement | null;
         if (target) {
           const isClickable = target.closest("a, button, [role='button'], input[type='submit'], input[type='button']");
-          setHoverType(isClickable ? "clickable" : "default");
+          setIsHovered(!!isClickable);
         } else {
-          setHoverType("default");
+          setIsHovered(false);
         }
       }
     };
@@ -127,28 +121,20 @@ export default function MagneticCursor() {
       window.removeEventListener("mouseup",   onMouseUp);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isTouch]); // Only primitive boolean dep — no re-subscribe on every mouse move
+  }, [isTouch, isMagnetic]); // Re-subscribe when magnetic status changes to keep handlers up to date
 
-  // ─── Sync ring size & shape to hover/magnetic state ─────────────────────────
+  // ─── Sync ring size to hover/magnetic state ──────────────────────────────────
   useEffect(() => {
     if (isMagnetic) {
-      ringSize.set(60);            // ~1.9x — clearly "attracted"
-      ringRadius.set(hoverType === "paper" ? 12 : 50); // px value
-    } else if (hoverType !== "default") {
-      ringSize.set(52);            // expanded hover
-      ringRadius.set(hoverType === "paper" ? 12 : 50);
+      ringSize.set(60);            // ~1.9x — clearly "attracted" size
+    } else if (isHovered) {
+      ringSize.set(52);            // expanded hover size
     } else {
-      ringSize.set(32);            // default
-      ringRadius.set(50);
+      ringSize.set(32);            // default size
     }
-  }, [hoverType, isMagnetic, ringSize, ringRadius]);
+  }, [isHovered, isMagnetic, ringSize]);
 
   // ─── Ring position: tracking vs magnetic ────────────────────────────────────
-  // When NOT magnetic, ringX/ringY should chase rawX/rawY.
-  // When magnetic, we already called ringX.set(center) above in mousemove.
-  // The key insight: useSpring(rawX, config) means the spring ALWAYS chases rawX.
-  // We cannot swap the spring config at runtime easily, so instead we maintain
-  // two separate springs and pick which one drives the ring.
   const trackX = useSpring(rawX, SPRING_TRACKING);
   const trackY = useSpring(rawY, SPRING_TRACKING);
   const snapX  = useMotionValue(-100);
@@ -160,7 +146,7 @@ export default function MagneticCursor() {
   useEffect(() => {
     if (!isTouch) {
       const unsub = rawX.on("change", (v) => {
-        if (!magneticCenterRef.current) return; // only update when snapping
+        if (!magneticCenterRef.current) return;
         snapX.set(magneticCenterRef.current.x);
         snapY.set(magneticCenterRef.current.y);
       });
@@ -189,7 +175,7 @@ export default function MagneticCursor() {
         }}
       />
 
-      {/* ── Outer Ring: spring position + spring size/shape ─────────────────── */}
+      {/* ── Outer Ring: spring position + spring size (ALWAYS circle: 50% border-radius) ── */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none border-[#2F8DEB] border-[1.5px] z-[9998] mix-blend-difference hidden lg:block"
         style={{
@@ -199,7 +185,7 @@ export default function MagneticCursor() {
           translateY: "-50%",
           width:        ringSize,
           height:       ringSize,
-          borderRadius: ringRadius,
+          borderRadius: "50%",
           scale:        ringScale,
         }}
       />
