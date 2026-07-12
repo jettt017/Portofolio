@@ -297,7 +297,7 @@ export default function App() {
       </main>
 
       {/* Premium Design Footer */}
-      <footer className="bg-near-black text-white py-16 px-6 md:px-12 select-none border-t border-white/5 relative overflow-hidden">
+      <footer className="bg-[#1A1A1A] text-white py-16 px-6 md:px-12 select-none border-t border-white/5 relative overflow-hidden">
         
         {/* Grid outline decoration */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
