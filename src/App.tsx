@@ -8,6 +8,8 @@ import Projects from "./components/Projects";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Loader from "./components/Loader";
+import CustomCursor from "./components/CustomCursor";
+import Magnetic from "./components/Magnetic";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -117,17 +119,19 @@ export default function App() {
 
       {/* Premium Sticky Navigation Header */}
       <header className="fixed top-0 left-0 right-0 bg-cream/70 backdrop-blur-md border-b border-near-black/5 py-4 px-6 md:px-12 flex justify-between items-center z-50 select-none">
-        <div 
-          onClick={() => scrollToSection("home")}
-          className="flex items-center gap-2 cursor-pointer font-display font-black text-near-black hover:text-brand-blue transition-colors text-base relative z-50"
-          tabIndex={0}
-          role="button"
-          onKeyDown={(e) => e.key === 'Enter' && scrollToSection("home")}
-          aria-label="Home"
-        >
-          <Folder className="w-5 h-5 text-brand-blue" />
-          <span>GANI ABI SAPUTRA V.S.</span>
-        </div>
+        <Magnetic>
+          <div 
+            onClick={() => scrollToSection("home")}
+            className="flex items-center gap-2 cursor-pointer font-display font-black text-near-black hover:text-brand-blue transition-colors text-base relative z-50"
+            tabIndex={0}
+            role="button"
+            onKeyDown={(e) => e.key === 'Enter' && scrollToSection("home")}
+            aria-label="Home"
+          >
+            <Folder className="w-5 h-5 text-brand-blue" />
+            <span>GANI ABI SAPUTRA V.S.</span>
+          </div>
+        </Magnetic>
 
         {/* Dynamic Nav Menu Anchors & Dark Mode Toggle */}
         <div className="hidden md:flex items-center gap-4">
@@ -140,29 +144,32 @@ export default function App() {
               { id: "certifications", label: "Certifications" },
               { id: "contact", label: "Contact" }
             ].map((sec) => (
-              <button
-                key={sec.id}
-                onClick={() => scrollToSection(sec.id)}
-                className={`px-3 py-1.5 rounded-full transition-all cursor-pointer ${
-                  activeSection === sec.id
-                    ? "bg-brand-blue text-white shadow-xs"
-                    : "text-near-black/50 hover:text-near-black hover:bg-near-black/5"
-                }`}
-              >
-                {sec.label}
-              </button>
+              <Magnetic key={sec.id}>
+                <button
+                  onClick={() => scrollToSection(sec.id)}
+                  className={`px-3 py-1.5 rounded-full transition-all cursor-pointer ${
+                    activeSection === sec.id
+                      ? "bg-brand-blue text-white shadow-xs"
+                      : "text-near-black/50 hover:text-near-black hover:bg-near-black/5"
+                  }`}
+                >
+                  {sec.label}
+                </button>
+              </Magnetic>
             ))}
           </nav>
           
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer h-9 w-9 flex items-center justify-center border border-near-black/10"
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
-          </motion.button>
+          <Magnetic>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setDarkMode(!darkMode)}
+              className="p-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer h-9 w-9 flex items-center justify-center border border-near-black/10"
+              aria-label="Toggle theme"
+            >
+              {darkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
+            </motion.button>
+          </Magnetic>
         </div>
 
         {/* Mobile quick action indicator & Hamburger */}
@@ -340,20 +347,24 @@ export default function App() {
       {/* Floating Animated Back To Top Button */}
       <AnimatePresence>
         {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            whileHover={{ scale: 1.1, rotate: 12 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white flex items-center justify-center shadow-2xl border border-white/10 cursor-pointer"
-          >
-            <ArrowUp className="w-5 h-5" />
-          </motion.button>
+          <Magnetic className="fixed bottom-6 right-6 z-40">
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              whileHover={{ scale: 1.1, rotate: 12 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="w-12 h-12 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white flex items-center justify-center shadow-2xl border border-white/10 cursor-pointer"
+            >
+              <ArrowUp className="w-5 h-5" />
+            </motion.button>
+          </Magnetic>
         )}
       </AnimatePresence>
 
+      {/* Custom cursor for premium desktop navigation */}
+      <CustomCursor />
     </div>
   );
 }
