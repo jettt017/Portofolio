@@ -17,11 +17,7 @@ export default function MagneticCursor() {
   const rawX = useMotionValue(-100);
   const rawY = useMotionValue(-100);
 
-  // ─── Ring position springs ───────────────────────────────────────────────────
-  // We swap between SPRING_TRACKING and SPRING_MAGNETIC dynamically via ref
-  const ringSpringConfig = useRef(SPRING_TRACKING);
-  const ringX = useSpring(rawX, ringSpringConfig.current);
-  const ringY = useSpring(rawY, ringSpringConfig.current);
+
 
   // ─── Ring visual springs (size / radius / scale) ────────────────────────────
   const ringSize   = useSpring(32, SPRING_SCALE);
@@ -79,21 +75,33 @@ export default function MagneticCursor() {
         const cy = r.top  + r.height / 2;
         magneticCenterRef.current = { x: cx, y: cy };
 
-        // Switch ring spring to slow magnetic-snap — direct mutation on the spring
-        // We achieve this by setting the target to center with slow config via animate
-        ringX.set(cx);
-        ringY.set(cy);
+        if (!isMagnetic) {
+          // Prevent teleportation: synchronize slow snap springs to the current track spring positions
+          slowX.set(trackX.get());
+          slowY.set(trackY.get());
+          setIsMagnetic(true);
+        }
+
+        // Set target positions for the slow magnetic spring
+        snapX.set(cx);
+        snapY.set(cy);
 
         // Hover type
         const attr = (nearest as HTMLElement).getAttribute("data-magnetic");
         setHoverType(attr === "paper" || attr === "folder" ? "paper" : "clickable");
-        setIsMagnetic(true);
       } else {
         magneticCenterRef.current = null;
 
-        // Fast tracking resumes automatically because ringX/ringY are bound to rawX/rawY
-        // via useSpring — we just stop redirecting them to the center
-        // (Nothing to do here; the springs will chase rawX/rawY on their own)
+        if (isMagnetic) {
+          // Prevent teleportation: synchronize raw/track springs back to the slow spring current positions
+          const currentX = slowX.get();
+          const currentY = slowY.get();
+          rawX.set(currentX);
+          rawY.set(currentY);
+          trackX.set(currentX);
+          trackY.set(currentY);
+          setIsMagnetic(false);
+        }
 
         // Hover type from element under cursor
         const target = e.target as HTMLElement | null;
@@ -103,7 +111,6 @@ export default function MagneticCursor() {
         } else {
           setHoverType("default");
         }
-        setIsMagnetic(false);
       }
     };
 

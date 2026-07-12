@@ -226,6 +226,16 @@ This section logs the sequential prompt pipeline used to design, refine, and per
 *   **Result:** Updated `Projects.tsx` folder tab buttons to use the base `data-magnetic` attribute, reverting their hover cursor shape to a circle.
 *   **Notes:** Focus outlines and hover cursor designs are now completely aligned as circles across all action buttons.
 
+## Feature: Cursor Teleportation & Snap Synchronization Fix
+*   **Date:** July 12, 2026
+*   **Purpose:** Fix kursor teleportation jump and laggy handoff when transitioning in and out of the data-magnetic snapping states.
+*   **Prompt:**
+    ```text
+    Avoid switching between separate spring instances (trackX/trackY vs slowX/slowY) which have different previous values, causing instant jumping/teleportation. Instead, synchronize the slow spring starting values to the track spring positions at the exact moment of entering the magnetic state, and synchronize rawX/rawY/trackX/trackY back to the slow spring current positions at the exact moment of leaving the magnetic state inside onMouseMove.
+    ```
+*   **Result:** Synchronized coordinate states of dual spring pools (`trackX`/`trackY` and `slowX`/`slowY`) inside `onMouseMove` at the exact frames of state transition.
+*   **Notes:** Eliminates teleportation jumps, delivering a completely fluid transition when entering and leaving magnetic fields.
+
 ---
 
 ## 🗺️ Asset Mapping
