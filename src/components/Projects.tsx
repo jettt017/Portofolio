@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { PROJECTS } from "../data";
 import SplitText from "./SplitText";
+import Magnetic from "./Magnetic";
 
 // ─────────────────────────────────────────────────────────────────
 // BrowserEmbed Component
@@ -504,20 +505,21 @@ export default function Projects() {
 
           <div className="flex flex-wrap gap-1.5 pt-2">
             {PROJECTS.map((proj) => (
-              <motion.button
-                data-magnetic
-                key={proj.id}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.98, y: 0 }}
-                onClick={() => setActiveTab(proj.id)}
-                className={`px-4 py-2 font-mono text-xs uppercase tracking-wider rounded-t-lg border-t border-x transition-all cursor-pointer ${
-                  activeTab === proj.id
-                    ? "bg-brand-blue text-white border-brand-blue font-bold shadow-md"
-                    : "bg-near-black/5 text-near-black/70 hover:bg-near-black/10 border-transparent"
-                }`}
-              >
-                📁 {proj.title}
-              </motion.button>
+              <Magnetic key={proj.id}>
+                <motion.button
+                  data-magnetic
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  whileTap={{ scale: 0.95, y: 0 }}
+                  onClick={() => setActiveTab(proj.id)}
+                  className={`px-4 py-2 font-mono text-xs uppercase tracking-wider rounded-t-lg border-t border-x transition-colors cursor-pointer ${
+                    activeTab === proj.id
+                      ? "bg-brand-blue text-white border-brand-blue font-bold shadow-md"
+                      : "bg-near-black/5 text-near-black/70 hover:bg-brand-blue/10 hover:text-brand-blue hover:border-brand-blue/20 border-transparent"
+                  }`}
+                >
+                  📁 {proj.title}
+                </motion.button>
+              </Magnetic>
             ))}
           </div>
         </div>
