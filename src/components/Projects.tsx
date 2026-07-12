@@ -49,8 +49,11 @@ function BrowserEmbed({ url, projectId, githubUrl, fallbackContent }: BrowserEmb
     <div className="w-full flex flex-col gap-3">
 
       {/* ── Browser Chrome ── */}
-      <div className="w-full bg-card-bg border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black"
-           style={{ minHeight: "420px" }}>
+      <div 
+        data-cursor="project"
+        className="w-full bg-card-bg border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col text-near-black"
+        style={{ minHeight: "420px" }}
+      >
 
         {/* Title bar */}
         <div className="bg-card-bg-light px-4 py-2.5 flex items-center gap-3 border-b border-near-black/10 shrink-0">
@@ -460,7 +463,11 @@ export default function Projects() {
       exit={{ opacity: 0, scale: 0.95 }}
       className="w-full flex flex-col gap-3"
     >
-      <div className="w-full flex-1 bg-card-bg-light border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-center items-center text-near-black relative group" style={{ minHeight: "420px" }}>
+      <div 
+        data-cursor="project"
+        className="w-full flex-1 bg-card-bg-light border border-near-black/15 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-center items-center text-near-black relative group" 
+        style={{ minHeight: "420px" }}
+      >
         <img 
           src="/assets/Project-Portalia.png" 
           alt="Portalia Official Showcase" 
