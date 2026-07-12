@@ -25,7 +25,8 @@ export default function Hero({ type }: HeroProps) {
         <div className="absolute top-0 md:-top-10 left-1/2 -translate-x-1/2 w-full text-center z-0">
           <motion.h1 
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-[12vw] sm:text-[10vw] font-black font-display text-near-black/90 uppercase tracking-tighter leading-none select-none"
           >
@@ -39,7 +40,8 @@ export default function Hero({ type }: HeroProps) {
           {/* Back Paper (the cream sheet sticking out) */}
           <motion.div 
             initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: false }}
             transition={{ delay: 0.3, duration: 0.6 }}
             whileHover={{ y: -30 }}
             className="absolute bottom-[40%] w-[85%] h-[55%] bg-card-bg rounded-t-lg shadow-sm border border-near-black/5 flex flex-col p-4 justify-between"
@@ -58,7 +60,8 @@ export default function Hero({ type }: HeroProps) {
           {/* Folder Body (Vibrant Blue #2F8DEB) */}
           <motion.div 
             initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="absolute bottom-0 w-full h-[75%] bg-brand-blue rounded-2xl shadow-xl flex flex-col overflow-hidden"
           >
@@ -85,7 +88,8 @@ export default function Hero({ type }: HeroProps) {
           {/* Floating Dark Card (Left side of folder, tilted) */}
           <motion.div 
             initial={{ x: -100, rotate: -20, opacity: 0 }}
-            animate={{ x: 0, rotate: -12, opacity: 1 }}
+            whileInView={{ x: 0, rotate: -12, opacity: 1 }}
+            viewport={{ once: false }}
             transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
             whileHover={{ rotate: -5, scale: 1.05 }}
             className="absolute -left-4 sm:left-4 top-[35%] w-56 sm:w-64 bg-[#1A1A1A] text-white p-4 rounded-xl shadow-2xl flex flex-col justify-between h-24 border border-white/10"
@@ -118,7 +122,8 @@ export default function Hero({ type }: HeroProps) {
       {/* Footer Texts (Faithful bottom alignment) */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
         transition={{ delay: 0.6, duration: 0.6 }}
         className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mt-8 pt-4 border-t border-near-black/10 text-near-black"
       >
