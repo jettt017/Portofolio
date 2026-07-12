@@ -5,8 +5,8 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  // Smooth spring configuration for the outer ring
-  const springConfig = { damping: 30, stiffness: 300, mass: 0.5 };
+  // Smooth spring configuration for the outer ring/brackets
+  const springConfig = { damping: 28, stiffness: 300, mass: 0.5 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -44,7 +44,6 @@ export default function CustomCursor() {
       const target = e.target as HTMLElement;
       if (!target) return;
 
-      // Detect hover targets: anchors, buttons, inputs, components with role button or custom hover attributes
       const isProject = target.closest("[data-cursor='project']");
       const isClickable = target.closest(
         "a, button, [role='button'], input[type='submit'], input[type='button'], [data-cursor='hover']"
@@ -65,7 +64,7 @@ export default function CustomCursor() {
     };
   }, []);
 
-  // Check if touch device to prevent rendering kursor kustom
+  // Check if touch device
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   useEffect(() => {
     const checkTouch = () => {
@@ -80,34 +79,60 @@ export default function CustomCursor() {
 
   if (isTouchDevice || !isVisible) return null;
 
-  // Variants for outer ring sizing and blending
-  const variants = {
+  // Variants for the outer container morphing
+  const containerVariants = {
     default: {
-      width: 20,
-      height: 20,
-      backgroundColor: "rgba(0, 0, 0, 0)",
-      border: "1.5px solid var(--near-black)",
+      width: 28,
+      height: 28,
+      backgroundColor: "rgba(47, 141, 235, 0)",
+      border: "0px solid transparent",
+      borderRadius: "0px",
+      boxShadow: "0 0 0px rgba(47, 141, 235, 0)",
       x: "-50%",
       y: "-50%",
     },
     hover: {
-      width: 50,
-      height: 50,
-      backgroundColor: "#FFFFFF",
-      border: "0px solid transparent",
-      mixBlendMode: "difference" as const,
+      width: 46,
+      height: 46,
+      backgroundColor: "rgba(47, 141, 235, 1)",
+      border: "2px solid #FFFFFF",
+      borderRadius: "50%",
+      boxShadow: "0 0 16px rgba(47, 141, 235, 0.6)",
       x: "-50%",
       y: "-50%",
     },
     project: {
       width: 80,
       height: 80,
-      backgroundColor: "#FFFFFF",
-      border: "0px solid transparent",
-      mixBlendMode: "difference" as const,
+      backgroundColor: "rgba(47, 141, 235, 1)",
+      border: "2px solid #FFFFFF",
+      borderRadius: "16px",
+      boxShadow: "0 0 20px rgba(47, 141, 235, 0.7)",
       x: "-50%",
       y: "-50%",
     },
+  };
+
+  // Variants for corner brackets (collapsing inward and fading out)
+  const cornerVariants = {
+    default: {
+      opacity: 1,
+      scale: 1,
+      x: 0,
+      y: 0,
+    },
+    hover: (i: number) => ({
+      opacity: 0,
+      scale: 0.5,
+      x: (i === 0 || i === 2) ? 12 : -12,
+      y: (i === 0 || i === 1) ? 12 : -12,
+    }),
+    project: (i: number) => ({
+      opacity: 0,
+      scale: 0.5,
+      x: (i === 0 || i === 2) ? 20 : -20,
+      y: (i === 0 || i === 1) ? 20 : -20,
+    }),
   };
 
   return (
@@ -124,18 +149,19 @@ export default function CustomCursor() {
           translateY: "-50%",
           pointerEvents: "none",
           zIndex: 9999,
-          width: 6,
-          height: 6,
+          width: 5,
+          height: 5,
           borderRadius: "50%",
-          backgroundColor: "var(--near-black)",
-          mixBlendMode: cursorType !== "default" ? "difference" : "normal",
+          backgroundColor: "#2F8DEB",
         }}
         animate={{
           scale: cursorType !== "default" ? 0 : 1,
+          opacity: cursorType !== "default" ? 0 : 1,
         }}
         transition={{ duration: 0.15 }}
       />
-      {/* Outer Ring */}
+
+      {/* Outer Bracket Container */}
       <motion.div
         style={{
           position: "fixed",
@@ -145,18 +171,40 @@ export default function CustomCursor() {
           y: cursorYSpring,
           pointerEvents: "none",
           zIndex: 9998,
-          borderRadius: "50%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
         }}
         animate={cursorType}
-        variants={variants}
-        transition={{ type: "spring", stiffness: 350, damping: 30, mass: 0.4 }}
+        variants={containerVariants}
+        transition={{ type: "spring", stiffness: 350, damping: 28, mass: 0.5 }}
       >
+        {/* Render 4 corners of brackets for the default state */}
+        <motion.div
+          custom={0}
+          variants={cornerVariants}
+          style={{ position: "absolute", top: 0, left: 0, width: 6, height: 6, borderTop: "1.5px solid #2F8DEB", borderLeft: "1.5px solid #2F8DEB" }}
+        />
+        <motion.div
+          custom={1}
+          variants={cornerVariants}
+          style={{ position: "absolute", top: 0, right: 0, width: 6, height: 6, borderTop: "1.5px solid #2F8DEB", borderRight: "1.5px solid #2F8DEB" }}
+        />
+        <motion.div
+          custom={2}
+          variants={cornerVariants}
+          style={{ position: "absolute", bottom: 0, left: 0, width: 6, height: 6, borderBottom: "1.5px solid #2F8DEB", borderLeft: "1.5px solid #2F8DEB" }}
+        />
+        <motion.div
+          custom={3}
+          variants={cornerVariants}
+          style={{ position: "absolute", bottom: 0, right: 0, width: 6, height: 6, borderBottom: "1.5px solid #2F8DEB", borderRight: "1.5px solid #2F8DEB" }}
+        />
+
+        {/* Text for project preview view */}
         {cursorType === "project" && (
-          <span className="text-[10px] font-mono font-black tracking-wider text-black select-none">
+          <span className="text-[10px] font-mono font-black tracking-wider text-white select-none">
             VIEW
           </span>
         )}
