@@ -87,5 +87,14 @@
   clip-path: polygon(0 0, 120px 0, 150px 30px, 100% 30px, 100% 100%, 0 100%);
 }
 
-
-
+/* ── View Transition API: radial reveal for dark/light mode toggle ────────── */
+/* Disable the browser's default cross-fade — our JS controls the animation  */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+/* New theme layer always sits on top so the clip-path reveal looks correct  */
+::view-transition-new(root) {
+  z-index: 9999;
+}

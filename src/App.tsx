@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { flushSync } from "react-dom";
 import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
+import type { MouseEvent as ReactMouseEvent } from "react";
 import { ArrowUp, Award, Folder, Mail, Phone, ExternalLink, Menu, X, Sun, Moon } from "lucide-react";
 import Hero from "./components/Hero";
 import AboutMe from "./components/AboutMe";
@@ -109,6 +111,48 @@ export default function App() {
     }
   };
 
+  // ── Theme toggle with View Transitions radial reveal ─────────────────────
+  const handleThemeToggle = (e: ReactMouseEvent<HTMLButtonElement>) => {
+    const x = e.clientX;
+    const y = e.clientY;
+    const nextDark = !darkMode;
+
+    // Fallback for browsers without View Transitions support
+    if (!document.startViewTransition) {
+      setDarkMode(nextDark);
+      return;
+    }
+
+    // Radius to cover the farthest corner of the screen from click point
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      // flushSync forces React to apply the state update synchronously
+      // so the snapshot for the transition captures the new theme
+      flushSync(() => setDarkMode(nextDark));
+    });
+
+    // After both snapshots are ready, animate the new layer's clip-path
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 600,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
+  };
+
   return (
     <div className="relative min-h-screen bg-cream selection:bg-brand-blue selection:text-white overflow-hidden text-near-black lg:cursor-none">
       
@@ -170,7 +214,7 @@ export default function App() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={handleThemeToggle}
               className="p-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer h-9 w-9 flex items-center justify-center border border-near-black/10"
               aria-label="Toggle theme"
             >
@@ -184,7 +228,7 @@ export default function App() {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={handleThemeToggle}
             className="p-2 text-near-black hover:text-brand-blue transition-colors rounded-full hover:bg-near-black/5 cursor-pointer h-9 w-9 flex items-center justify-center border border-near-black/10"
             aria-label="Toggle theme"
           >
