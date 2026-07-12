@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Phone, Mail, ThumbsUp, Send, Check, MessageSquare, Inbox, Trash2 } from "lucide-react";
 import { PERSONAL_INFO } from "../data";
 import SplitText from "./SplitText";
+import Magnetic from "./Magnetic";
 
 interface SavedMessage {
   id: string;
@@ -118,26 +119,32 @@ export default function Contact() {
               </span>
               
               <div className="flex gap-2">
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setActiveView("info")}
-                  className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase cursor-pointer transition-colors ${
-                    activeView === "info" ? "bg-white text-[#1A1A1A] font-bold" : "bg-white/10 text-white/70 hover:bg-white/20"
-                  }`}
-                >
-                  Contacts
-                </motion.button>
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setActiveView("form")}
-                  className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase cursor-pointer transition-colors ${
-                    activeView === "form" ? "bg-white text-[#1A1A1A] font-bold" : "bg-white/10 text-white/70 hover:bg-white/20"
-                  }`}
-                >
-                  Message Form
-                </motion.button>
+                <Magnetic>
+                  <motion.button 
+                    data-magnetic
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setActiveView("info")}
+                    className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase cursor-pointer transition-colors ${
+                      activeView === "info" ? "bg-white text-[#1A1A1A] font-bold" : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                    }`}
+                  >
+                    Contacts
+                  </motion.button>
+                </Magnetic>
+                <Magnetic>
+                  <motion.button 
+                    data-magnetic
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setActiveView("form")}
+                    className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase cursor-pointer transition-colors ${
+                      activeView === "form" ? "bg-white text-[#1A1A1A] font-bold" : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                    }`}
+                  >
+                    Message Form
+                  </motion.button>
+                </Magnetic>
               </div>
             </div>
 
@@ -152,54 +159,59 @@ export default function Contact() {
                   className="space-y-4 flex-1 flex flex-col justify-center"
                 >
                   {/* Phone Row */}
-                  <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-brand-blue hover:bg-white/10 transition-all group">
+                  <motion.div 
+                    whileHover={{ scale: 1.02, x: 8 }}
+                    className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-brand-blue hover:bg-white/10 transition-colors group cursor-default"
+                  >
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                      <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
                         <Phone className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono text-white/40 block">PHONE NUMBER</span>
+                        <span className="text-[10px] font-mono text-white/40 block group-hover:text-brand-blue/80 transition-colors">PHONE NUMBER</span>
                         <span className="text-sm font-mono font-bold">{PERSONAL_INFO.phone}</span>
                       </div>
                     </div>
-                    <span className="text-[10px] font-mono bg-white/15 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">Active</span>
-                  </div>
+                    <span className="text-[10px] font-mono bg-white/15 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity group-hover:bg-brand-blue group-hover:text-white">Active</span>
+                  </motion.div>
 
                   {/* Mail Row */}
-                  <a 
+                  <motion.a 
+                    whileHover={{ scale: 1.02, x: 8 }}
                     href={`mailto:${PERSONAL_INFO.email}`}
-                    className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-brand-blue hover:bg-white/10 transition-all group cursor-pointer"
+                    className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-brand-blue hover:bg-white/10 transition-colors group cursor-pointer"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                      <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
                         <Mail className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono text-white/40 block">EMAIL ADDRESS</span>
+                        <span className="text-[10px] font-mono text-white/40 block group-hover:text-brand-blue/80 transition-colors">EMAIL ADDRESS</span>
                         <span className="text-sm font-mono font-bold">{PERSONAL_INFO.email}</span>
                       </div>
                     </div>
                     <span className="text-[10px] font-mono bg-brand-blue text-white px-2 py-0.5 rounded">Primary</span>
-                  </a>
+                  </motion.a>
 
                   {/* Github Row */}
-                  <a 
+                  <motion.a 
+                    whileHover={{ scale: 1.02, x: 8 }}
                     href={`https://${PERSONAL_INFO.github}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-brand-blue hover:bg-white/10 transition-all group cursor-pointer"
+                    className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-brand-blue hover:bg-white/10 transition-colors group cursor-pointer"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                      <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
                         <ThumbsUp className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono text-white/40 block">GITHUB PROFILE</span>
+                        <span className="text-[10px] font-mono text-white/40 block group-hover:text-brand-blue/80 transition-colors">GITHUB PROFILE</span>
                         <span className="text-sm font-mono font-bold underline">{PERSONAL_INFO.github}</span>
                       </div>
                     </div>
-                    <span className="text-[10px] font-mono bg-white/15 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">Explore →</span>
-                  </a>
+                    <span className="text-[10px] font-mono bg-white/15 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity group-hover:bg-brand-blue group-hover:text-white">Explore →</span>
+                  </motion.a>
                 </motion.div>
               ) : (
                 /* 2. Interactive message form */
@@ -233,7 +245,7 @@ export default function Contact() {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="John Doe"
-                            className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-xs focus:outline-brand-blue text-white" 
+                            className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-xs focus:outline-brand-blue text-white hover:bg-white/10 hover:border-brand-blue/50 transition-colors" 
                           />
                         </div>
                         <div className="space-y-1">
@@ -244,7 +256,7 @@ export default function Contact() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="john@example.com"
-                            className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-xs focus:outline-brand-blue text-white" 
+                            className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-xs focus:outline-brand-blue text-white hover:bg-white/10 hover:border-brand-blue/50 transition-colors" 
                           />
                         </div>
                       </div>
@@ -256,19 +268,22 @@ export default function Contact() {
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
                           placeholder="Saya tertarik untuk berkolaborasi dalam proyek..."
-                          className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-xs focus:outline-brand-blue text-white h-24 resize-none"
+                          className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-xs focus:outline-brand-blue text-white h-24 resize-none hover:bg-white/10 hover:border-brand-blue/50 transition-colors"
                         />
                       </div>
 
-                      <motion.button 
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        type="submit" 
-                        className="w-full bg-brand-blue hover:bg-brand-blue-hover text-white font-bold text-xs py-2.5 rounded-lg flex items-center justify-center gap-2 cursor-pointer transition-colors shadow-lg"
-                      >
-                        <Send className="w-3.5 h-3.5" />
-                        Send Message
-                      </motion.button>
+                      <Magnetic>
+                        <motion.button 
+                          data-magnetic
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          type="submit" 
+                          className="w-full bg-brand-blue hover:bg-brand-blue-hover text-white font-bold text-xs py-2.5 rounded-lg flex items-center justify-center gap-2 cursor-pointer transition-colors shadow-lg"
+                        >
+                          <Send className="w-3.5 h-3.5" />
+                          Send Message
+                        </motion.button>
+                      </Magnetic>
                     </form>
                   )}
                 </motion.div>
