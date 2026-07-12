@@ -9,6 +9,7 @@ import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Loader from "./components/Loader";
 import Magnetic from "./components/Magnetic";
+import MagneticCursor from "./components/MagneticCursor";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -102,7 +103,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-cream selection:bg-brand-blue selection:text-white overflow-hidden text-near-black">
+    <div className="relative min-h-screen bg-cream selection:bg-brand-blue selection:text-white overflow-hidden text-near-black lg:cursor-none">
       
       <AnimatePresence>
         {isLoading && (
@@ -361,7 +362,7 @@ export default function App() {
           </Magnetic>
         )}
       </AnimatePresence>
-
+      <MagneticCursor />
     </div>
   );
 }

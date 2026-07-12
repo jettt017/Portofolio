@@ -52,6 +52,13 @@
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  /* Global focus-visible: pill-shaped brand-blue ring, consistent on all interactive elements */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-cream), 0 0 0 4px var(--brand-blue);
+    border-radius: 9999px;
+  }
 }
 
 /* Custom transitions and scrollbar styles */

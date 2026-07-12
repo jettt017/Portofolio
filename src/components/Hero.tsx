@@ -105,6 +105,7 @@ export default function Hero({ type }: HeroProps) {
                 <Image className="w-4 h-4 hover:text-brand-blue transition-colors cursor-pointer" />
               </div>
               <motion.div 
+                data-magnetic
                 whileTap={{ scale: 0.9 }}
                 className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center cursor-pointer transition-colors"
                 onClick={() => {
