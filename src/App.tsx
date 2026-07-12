@@ -25,6 +25,13 @@ export default function App() {
   });
 
   useEffect(() => {
+    // Prevent browser from automatically restoring scroll position on refresh
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    // Force scroll to top
+    window.scrollTo(0, 0);
+    
     if (darkMode) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -258,7 +265,9 @@ export default function App() {
       </AnimatePresence>
 
       {/* Core Sections Stack */}
-      <main className="pt-16">
+      {!isLoading && (
+        <>
+          <main className="pt-16">
         
         {/* Page 1 Hero */}
         <div id="home">
@@ -343,6 +352,8 @@ export default function App() {
           </div>
         </div>
       </footer>
+      </>
+      )}
 
       {/* Floating Animated Back To Top Button */}
       <AnimatePresence>
