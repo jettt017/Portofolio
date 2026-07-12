@@ -94,20 +94,20 @@ export default function CustomCursor() {
     hover: {
       width: 46,
       height: 46,
-      backgroundColor: "rgba(47, 141, 235, 1)",
-      border: "2px solid #FFFFFF",
+      backgroundColor: "var(--near-black)",
+      border: "0px solid transparent",
       borderRadius: "50%",
-      boxShadow: "0 0 16px rgba(47, 141, 235, 0.6)",
+      boxShadow: "0 0 16px rgba(47, 141, 235, 0.4)",
       x: "-50%",
       y: "-50%",
     },
     project: {
       width: 80,
       height: 80,
-      backgroundColor: "rgba(47, 141, 235, 1)",
-      border: "2px solid #FFFFFF",
+      backgroundColor: "var(--near-black)",
+      border: "0px solid transparent",
       borderRadius: "16px",
-      boxShadow: "0 0 20px rgba(47, 141, 235, 0.7)",
+      boxShadow: "0 0 20px rgba(47, 141, 235, 0.5)",
       x: "-50%",
       y: "-50%",
     },
@@ -204,7 +204,7 @@ export default function CustomCursor() {
 
         {/* Text for project preview view */}
         {cursorType === "project" && (
-          <span className="text-[10px] font-mono font-black tracking-wider text-white select-none">
+          <span className="text-[10px] font-mono font-black tracking-wider text-cream select-none">
             VIEW
           </span>
         )}
