@@ -1,16 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
 // ─── Spring Presets ────────────────────────────────────────────────────────────
-// "tracking"     — ring follows mouse: snappy but not instant
+// "tracking" — ring follows mouse: snappy and highly responsive
 const SPRING_TRACKING = { stiffness: 500, damping: 40, mass: 0.5 };
-// "magnetic-snap" — ring pulled toward data-magnetic center: elastic/heavy feel
-const SPRING_MAGNETIC  = { stiffness: 100, damping: 30, restDelta: 0.001 };
-// "scale"        — ring resize on hover/click: snappy morph
+// "scale"    — ring resize on hover/click: snappy morph
 const SPRING_SCALE     = { stiffness: 400, damping: 25 };
-
-// Magnetic pull detection radius (px from element edge)
-const RADIUS = 75;
 
 export default function MagneticCursor() {
   // ─── Raw mouse motion values (no spring — used by dot directly) ─────────────
@@ -23,12 +18,7 @@ export default function MagneticCursor() {
 
   // ─── Interaction state (primitives only in deps) ─────────────────────────────
   const [isHovered, setIsHovered] = useState(false);
-  const [isMagnetic, setIsMagnetic] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
-
-  // Ref to hold magnetic target center so we can read it inside mousemove without
-  // causing the effect to re-subscribe on every state change
-  const magneticCenterRef = useRef<{ x: number; y: number } | null>(null);
 
   // ─── Touch detection ─────────────────────────────────────────────────────────
   useEffect(() => {
@@ -50,61 +40,13 @@ export default function MagneticCursor() {
       rawX.set(clientX);
       rawY.set(clientY);
 
-      // 2. Scan for nearest data-magnetic element
-      const magnetics = document.querySelectorAll("[data-magnetic]");
-      let nearest: Element | null = null;
-      let minDist = Infinity;
-
-      magnetics.forEach((el) => {
-        const r = el.getBoundingClientRect();
-        const dx = Math.max(r.left - clientX, 0, clientX - r.right);
-        const dy = Math.max(r.top - clientY, 0, clientY - r.bottom);
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < RADIUS && dist < minDist) {
-          minDist = dist;
-          nearest = el;
-        }
-      });
-
-      if (nearest) {
-        const r = (nearest as HTMLElement).getBoundingClientRect();
-        const cx = r.left + r.width / 2;
-        const cy = r.top  + r.height / 2;
-        magneticCenterRef.current = { x: cx, y: cy };
-
-        if (!isMagnetic) {
-          // Prevent teleportation: synchronize slow snap springs to the current track spring positions
-          slowX.set(trackX.get());
-          slowY.set(trackY.get());
-          setIsMagnetic(true);
-        }
-
-        // Set target positions for the slow magnetic spring
-        snapX.set(cx);
-        snapY.set(cy);
-        setIsHovered(true);
+      // 2. Hover check for elements under cursor (buttons, links, active items)
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        const isClickable = target.closest("a, button, [role='button'], input[type='submit'], input[type='button']");
+        setIsHovered(!!isClickable);
       } else {
-        magneticCenterRef.current = null;
-
-        if (isMagnetic) {
-          // Prevent teleportation: synchronize raw/track springs back to the slow spring current positions
-          const currentX = slowX.get();
-          const currentY = slowY.get();
-          rawX.set(currentX);
-          rawY.set(currentY);
-          trackX.set(currentX);
-          trackY.set(currentY);
-          setIsMagnetic(false);
-        }
-
-        // Hover check for element under cursor
-        const target = e.target as HTMLElement | null;
-        if (target) {
-          const isClickable = target.closest("a, button, [role='button'], input[type='submit'], input[type='button']");
-          setIsHovered(!!isClickable);
-        } else {
-          setIsHovered(false);
-        }
+        setIsHovered(false);
       }
     };
 
@@ -120,44 +62,20 @@ export default function MagneticCursor() {
       window.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mouseup",   onMouseUp);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isTouch, isMagnetic]); // Re-subscribe when magnetic status changes to keep handlers up to date
+  }, [isTouch]);
 
-  // ─── Sync ring size to hover/magnetic state ──────────────────────────────────
+  // ─── Sync ring size to hover state ───────────────────────────────────────────
   useEffect(() => {
-    if (isMagnetic) {
-      ringSize.set(60);            // ~1.9x — clearly "attracted" size
-    } else if (isHovered) {
+    if (isHovered) {
       ringSize.set(52);            // expanded hover size
     } else {
       ringSize.set(32);            // default size
     }
-  }, [isHovered, isMagnetic, ringSize]);
+  }, [isHovered, ringSize]);
 
-  // ─── Ring position: tracking vs magnetic ────────────────────────────────────
+  // ─── Ring position tracking spring ──────────────────────────────────────────
   const trackX = useSpring(rawX, SPRING_TRACKING);
   const trackY = useSpring(rawY, SPRING_TRACKING);
-  const snapX  = useMotionValue(-100);
-  const snapY  = useMotionValue(-100);
-  const slowX  = useSpring(snapX, SPRING_MAGNETIC);
-  const slowY  = useSpring(snapY, SPRING_MAGNETIC);
-
-  // Keep snap targets updated when magnetic
-  useEffect(() => {
-    if (!isTouch) {
-      const unsub = rawX.on("change", (v) => {
-        if (!magneticCenterRef.current) return;
-        snapX.set(magneticCenterRef.current.x);
-        snapY.set(magneticCenterRef.current.y);
-      });
-      return unsub;
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isTouch]);
-
-  // Derive active ring coordinates
-  const activeRingX = isMagnetic ? slowX : trackX;
-  const activeRingY = isMagnetic ? slowY : trackY;
 
   if (isTouch) return null;
 
@@ -179,8 +97,8 @@ export default function MagneticCursor() {
       <motion.div
         className="fixed top-0 left-0 pointer-events-none border-[#2F8DEB] border-[1.5px] z-[9998] mix-blend-difference hidden lg:block"
         style={{
-          x: activeRingX,
-          y: activeRingY,
+          x: trackX,
+          y: trackY,
           translateX: "-50%",
           translateY: "-50%",
           width:        ringSize,

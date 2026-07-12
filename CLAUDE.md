@@ -246,6 +246,16 @@ This section logs the sequential prompt pipeline used to design, refine, and per
 *   **Result:** Cleaned up `MagneticCursor.tsx` by removing `hoverType` string states and the `"paper"` check. Enforced `borderRadius: "50%"` directly on the ring style.
 *   **Notes:** Simplifies the state machine and makes the cursor shape look 100% consistent across all components.
 
+## Feature: Removed Cursor Magnet Snapping Logic
+*   **Date:** July 12, 2026
+*   **Purpose:** Revert the custom cursor snapping mechanics completely to eliminate duplicate magnetic behaviors (button pull vs. cursor snap) and cursor teleportation.
+*   **Prompt:**
+    ```text
+    Remove all magnetic element detection, snap center locks, and coordinate springs from MagneticCursor.tsx. The cursor should be a pure mouse follower, expanding smoothly as a circle on hover over clickable elements and squashing on click, completely preventing cursor teleportation.
+    ```
+*   **Result:** Cleaned up `MagneticCursor.tsx` by removing all `[data-magnetic]` query selectors, snap calculations, and coordinate handoffs. The ring now uses a single SPRING_TRACKING spring to track the mouse coordinates smoothly at all times.
+*   **Notes:** Eliminates double animations (magnetic buttons already move dynamically) and guarantees zero cursor jump or lag.
+
 ---
 
 ## 🗺️ Asset Mapping
