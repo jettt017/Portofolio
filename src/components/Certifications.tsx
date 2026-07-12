@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { ChevronRight, Award, ShieldCheck, CheckCircle2, Bookmark, GraduationCap } from "lucide-react";
 import { CERTIFICATIONS } from "../data";
+import SplitText from "./SplitText";
 
 export default function Certifications() {
   const [dicodingSrc, setDicodingSrc] = useState("/assets/Certivicate-Dicoding.png");
@@ -46,20 +47,26 @@ export default function Certifications() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0c_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0c_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
           {/* Heading */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-center md:text-left z-10 space-y-1"
-          >
+          <div className="text-center md:text-left z-10 space-y-1">
             <h2 className="text-4xl md:text-6xl font-black font-display tracking-tight text-white uppercase leading-none">
-              Certifications
+              <SplitText
+                text="Certifications"
+                delay={0.1}
+                stagger={0.07}
+                once={false}
+                threshold={0.3}
+              />
             </h2>
-            <p className="text-white/60 font-mono text-xs uppercase tracking-widest">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              className="text-white/60 font-mono text-xs uppercase tracking-widest"
+            >
               EDUCATIONAL TRAINING AND PROFESSIONAL ACHIEVEMENTS
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           {/* Dual Certification Cards Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 z-10">

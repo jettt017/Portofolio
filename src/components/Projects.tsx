@@ -7,6 +7,7 @@ import {
   Globe, Github, BookOpen, Loader2, AlertTriangle, RefreshCw, Figma
 } from "lucide-react";
 import { PROJECTS } from "../data";
+import SplitText from "./SplitText";
 
 // ─────────────────────────────────────────────────────────────────
 // BrowserEmbed Component
@@ -487,8 +488,14 @@ export default function Projects() {
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-near-black/10 pb-4">
           <div>
-            <h2 className="text-3xl md:text-5xl font-black font-display text-near-black uppercase tracking-tight">
-              Featured Projects
+            <h2 className="text-3xl md:text-5xl font-black font-display text-near-black uppercase tracking-tight leading-none">
+              <SplitText
+                text="Featured Projects"
+                delay={0.1}
+                stagger={0.07}
+                once={false}
+                threshold={0.3}
+              />
             </h2>
             <p className="text-xs font-mono uppercase tracking-widest text-near-black/50 mt-1">
               Select a folder below to explore live demos

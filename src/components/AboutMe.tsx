@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Camera, ChevronRight, Monitor, Sparkles, Trophy } from "lucide-react";
 import { PERSONAL_INFO } from "../data";
+import SplitText from "./SplitText";
 
 export default function AboutMe() {
   // Fun interactive state for Gani's photo filter
@@ -164,7 +165,13 @@ export default function AboutMe() {
             {/* Massive Heading */}
             <div className="space-y-1">
               <h2 className="text-4xl md:text-5xl font-black font-display tracking-tight uppercase leading-none">
-                About Me
+                <SplitText
+                  text="About Me"
+                  delay={0.1}
+                  stagger={0.09}
+                  once={false}
+                  threshold={0.3}
+                />
               </h2>
               <div className="h-1 w-16 bg-white/30 rounded"></div>
             </div>

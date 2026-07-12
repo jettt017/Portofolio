@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ChevronRight, Layers, Cpu, Wrench } from "lucide-react";
 import { SKILLS_AND_TOOLS } from "../data";
+import SplitText from "./SplitText";
 
 // Maps each tech key → Simple Icons CDN slug + brand hex color
 const TECH_ICON_MAP: Record<string, { slug: string; color: string; deviconUrl?: string }> = {
@@ -116,20 +117,26 @@ export default function TechStack() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0c_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0c_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
           {/* Large Title Section */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-center md:text-left z-10 space-y-2"
-          >
+          <div className="text-center md:text-left z-10 space-y-2">
             <h2 className="text-5xl md:text-7xl font-black font-display tracking-tight text-white uppercase leading-none">
-              Tech Stack
+              <SplitText
+                text="Tech Stack"
+                delay={0.1}
+                stagger={0.09}
+                once={false}
+                threshold={0.3}
+              />
             </h2>
-            <p className="text-white/60 font-mono text-xs uppercase tracking-widest">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="text-white/60 font-mono text-xs uppercase tracking-widest"
+            >
               BUILDING MODERN AND SCALABLE DIGITAL SOLUTIONS
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           {/* Three Categorized Columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 z-10">

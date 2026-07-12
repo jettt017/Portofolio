@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Phone, Mail, ThumbsUp, Send, Check, MessageSquare, Inbox, Trash2 } from "lucide-react";
 import { PERSONAL_INFO } from "../data";
+import SplitText from "./SplitText";
 
 interface SavedMessage {
   id: string;
@@ -78,19 +79,18 @@ export default function Contact() {
         
         {/* Left Column: Massive Stacked Typo "Work with Me!" */}
         <div className="lg:col-span-5 text-left">
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.6 }}
-            className="text-[14vw] lg:text-[7vw] font-black font-display text-brand-blue uppercase leading-[0.85] tracking-tighter"
-          >
-            Work
-            <br />
-            with
-            <br />
-            Me!
-          </motion.h2>
+          <h2 className="text-[14vw] lg:text-[7vw] font-black font-display text-brand-blue uppercase leading-[0.85] tracking-tighter">
+            {/* Each word on its own line, cascading delay */}
+            <span style={{ display: "block" }}>
+              <SplitText text="Work" delay={0} stagger={0.09} once={false} threshold={0.3} />
+            </span>
+            <span style={{ display: "block" }}>
+              <SplitText text="with" delay={0.12} stagger={0.09} once={false} threshold={0.3} />
+            </span>
+            <span style={{ display: "block" }}>
+              <SplitText text="Me!" delay={0.24} stagger={0.09} once={false} threshold={0.3} />
+            </span>
+          </h2>
         </div>
 
         {/* Right Column: Descriptions & Interactive Dark Container */}

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { AtSign, Image, Send, Folder } from "lucide-react";
 import { PERSONAL_INFO } from "../data";
+import SplitText from "./SplitText";
 
 interface HeroProps {
   type: "main" | "projects";
@@ -23,15 +24,15 @@ export default function Hero({ type }: HeroProps) {
         
         {/* Massive Condensed Heading */}
         <div className="absolute top-0 md:-top-10 left-1/2 -translate-x-1/2 w-full text-center z-0">
-          <motion.h1 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-[12vw] sm:text-[10vw] font-black font-display text-near-black/90 uppercase tracking-tighter leading-none select-none"
-          >
-            {isMain ? "Portfolio" : "Featured Project"}
-          </motion.h1>
+          <h1 className="text-[12vw] sm:text-[10vw] font-black font-display text-near-black/90 uppercase tracking-tighter leading-none select-none">
+            <SplitText
+              text={isMain ? "Portfolio" : "Featured Project"}
+              delay={0.1}
+              stagger={0.09}
+              once={false}
+              threshold={0.2}
+            />
+          </h1>
         </div>
 
         {/* Interactive File Folder Representation */}
