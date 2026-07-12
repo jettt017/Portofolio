@@ -80,21 +80,5 @@
   clip-path: polygon(0 0, 120px 0, 150px 30px, 100% 30px, 100% 100%, 0 100%);
 }
 
-/* Hide default cursor on desktop pointer devices to enable custom cursor */
-@media (pointer: fine) {
-  body, 
-  a, 
-  button, 
-  [role="button"], 
-  input[type="submit"], 
-  input[type="button"], 
-  input[type="reset"],
-  select, 
-  textarea, 
-  [data-cursor="hover"], 
-  [data-cursor="project"] {
-    cursor: none !important;
-  }
-}
 
 

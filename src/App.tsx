@@ -8,7 +8,6 @@ import Projects from "./components/Projects";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Loader from "./components/Loader";
-import CustomCursor from "./components/CustomCursor";
 import Magnetic from "./components/Magnetic";
 
 export default function App() {
@@ -363,8 +362,6 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Custom cursor for premium desktop navigation */}
-      <CustomCursor />
     </div>
   );
 }
