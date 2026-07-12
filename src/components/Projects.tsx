@@ -498,6 +498,7 @@ export default function Projects() {
           <div className="flex flex-wrap gap-1.5 pt-2">
             {PROJECTS.map((proj) => (
               <motion.button
+                data-magnetic
                 key={proj.id}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98, y: 0 }}
@@ -526,72 +527,75 @@ export default function Projects() {
 
         {/* Left: Editorial description */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8 p-1" data-project-detail>
-          {PROJECTS.map((proj) => {
-            if (proj.id !== activeTab) return null;
-            return (
-              <motion.div
-                key={proj.id}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-6"
-              >
-                <div className="space-y-2">
-                  <span className="text-xs font-mono uppercase tracking-widest text-brand-blue font-bold">{proj.subtitle}</span>
-                  <h3 className="text-4xl md:text-5xl font-black font-display text-brand-blue uppercase tracking-tighter leading-none">
-                    {proj.title}
-                  </h3>
-                  <div className="h-0.5 bg-brand-blue/30 w-24" />
-                </div>
-
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-near-black text-white text-xs font-mono rounded-md uppercase tracking-wider">
-                  <User className="w-3.5 h-3.5 text-brand-blue" />
-                  Role: {proj.role}
-                </div>
-
-                <p className="text-sm text-near-black/80 leading-relaxed font-sans font-light">
-                  {proj.description}
-                </p>
-
-                <div className="space-y-2">
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-near-black/50 font-bold">Tech Stack</h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {proj.techStack.map((tech) => (
-                      <span key={tech} className="px-2.5 py-0.5 bg-near-black/5 text-near-black/80 font-mono text-[11px] rounded-md border border-near-black/5">
-                        {tech}
-                      </span>
-                    ))}
+          <AnimatePresence mode="wait">
+            {PROJECTS.map((proj) => {
+              if (proj.id !== activeTab) return null;
+              return (
+                <motion.div
+                  key={proj.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="space-y-6"
+                >
+                  <div className="space-y-2">
+                    <span className="text-xs font-mono uppercase tracking-widest text-brand-blue font-bold">{proj.subtitle}</span>
+                    <h3 className="text-4xl md:text-5xl font-black font-display text-brand-blue uppercase tracking-tighter leading-none">
+                      {proj.title}
+                    </h3>
+                    <div className="h-0.5 bg-brand-blue/30 w-24" />
                   </div>
-                </div>
 
-                <div className="space-y-2 pt-2">
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-near-black/50 font-bold">Core Contributions</h4>
-                  <ul className="space-y-2.5">
-                    {proj.contributions.map((con, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs text-near-black/90 leading-tight">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-1 shrink-0" />
-                        <span>{con}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {proj.link && (
-                  <div className="pt-4">
-                    <a
-                      href={`https://${proj.link}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-mono text-brand-blue font-bold border-b-2 border-brand-blue pb-0.5 hover:text-brand-blue-hover hover:border-brand-blue-hover transition-all cursor-pointer group"
-                    >
-                      {proj.link}
-                      <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </a>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-near-black text-white text-xs font-mono rounded-md uppercase tracking-wider">
+                    <User className="w-3.5 h-3.5 text-brand-blue" />
+                    Role: {proj.role}
                   </div>
-                )}
-              </motion.div>
-            );
-          })}
+
+                  <p className="text-sm text-near-black/80 leading-relaxed font-sans font-light">
+                    {proj.description}
+                  </p>
+
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-mono uppercase tracking-widest text-near-black/50 font-bold">Tech Stack</h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {proj.techStack.map((tech) => (
+                        <span key={tech} className="px-2.5 py-0.5 bg-near-black/5 text-near-black/80 font-mono text-[11px] rounded-md border border-near-black/5">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 pt-2">
+                    <h4 className="text-xs font-mono uppercase tracking-widest text-near-black/50 font-bold">Core Contributions</h4>
+                    <ul className="space-y-2.5">
+                      {proj.contributions.map((con, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-xs text-near-black/90 leading-tight">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-1 shrink-0" />
+                          <span>{con}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {proj.link && (
+                    <div className="pt-4">
+                      <a
+                        href={`https://${proj.link}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs font-mono text-brand-blue font-bold border-b-2 border-brand-blue pb-0.5 hover:text-brand-blue-hover hover:border-brand-blue-hover transition-all cursor-pointer group"
+                      >
+                        {proj.link}
+                        <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </a>
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
 
         {/* Right: Live demo viewport */}
